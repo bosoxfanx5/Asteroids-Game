@@ -17,7 +17,9 @@ class Banner
 {
    public:
    Banner() {};
-   void draw() {drawDigit(Point(180, 180), '5');}
+   void draw() {drawDigit(Point( 180, 180), '5');
+                drawDigit(Point(-180, 180), '5');}
+   
 };
 
 #endif /* banner_h */
