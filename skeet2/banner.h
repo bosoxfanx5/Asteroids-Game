@@ -16,9 +16,21 @@
 class Banner
 {
    public:
-   Banner() {};
-   void draw() {drawDigit(Point( 180, 180), '5');
-                drawDigit(Point(-180, 180), '5');}
+   Banner() : leftChar('0'), rightChar('0') {};
+   
+   //Draw Methods
+   void draw()               {drawDigit(Point( 180, 180), rightChar);
+                              drawDigit(Point(-180, 180), leftChar);}
+   
+   void draw(char l, char r) { leftChar  = l;
+                               rightChar = r;
+      
+                              drawDigit(Point( 180, 180), rightChar);
+                              drawDigit(Point(-180, 180), leftChar);}
+   
+   
+   char  leftChar;
+   char rightChar;
    
 };
 
