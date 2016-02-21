@@ -16,10 +16,14 @@
 
 class Velocity
 {
+public:
+   Velocity()      {hypotenuse = 0;}
+   Velocity(int h) {hypotenuse = h;}
    
+   private:
    Point slope;
    
-   float hypotenuse = 0; //speed
+   float hypotenuse = 0; //speed in pixels per frame
    float angle = 0;
    
    void convertSlope();

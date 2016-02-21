@@ -9,6 +9,8 @@
 #include "uiInteract.h"
 #include "uiDraw.h"
 #include "rifle.h"
+#include "bullet.h"
+#include "pigeon.h"
 using namespace std;
 
 /************************************
@@ -33,18 +35,26 @@ public:
  * engine will wait until the proper amount of
  * time has passed and put the drawing on the screen.
  **************************************/
-void callBack(const Interface *pUI, void * p)
+void callBack(const Interface *pUI, void * vp)
 //void callBack(const Interface *pUI, vector<Ball>& ballVector)
 {
+/*
+  ___  __   __            __                  ___  __
+ |__  |__) /  \  |\/|    /  `  /\  |    |    |__  |__)
+ |    |  \ \__/  |  |    \__, /--\ |___ |___ |___ |  \
+ 
+*/
    //Ball * pBall = (Ball *)p;  // cast the void pointer into a known type
-   std::vector<Ball> ballVector = *(std::vector<Ball> *)p;
+   std::vector<Ball> ballVector = *(std::vector<Ball> *)vp;
    
    //Offset for testing...
-   int offset = 0;
+   int offset = 0; //to sepearate objects
    int vectorOffset = 0;
    
-   //std::cout << "myvector contains:";
-   for (std::vector<Ball>::iterator it = ballVector.begin(); it != ballVector.end(); it++)
+   //Iterate through vector that was passed in...
+   for (std::vector<Ball>::iterator it  = ballVector.begin();
+                                    it != ballVector.end();
+                                    it++)
    {
       //std::cout << ' ' << *it;
       
@@ -54,33 +64,52 @@ void callBack(const Interface *pUI, void * p)
       b->pt.addY(offset);
       
       // move the polygon
-      if (pUI->isRight())
-         b->pt.addX(1);
-      if (pUI->isLeft())
-         b->pt.addX(-1);
-      if (pUI->isUp())
-         b->pt.addY(1);
-      if (pUI->isDown())
-         b->pt.addY(-1);
+      if (pUI->isRight()) b->pt.addX( 1);
+      if (pUI->isLeft())  b->pt.addX(-1);
+      if (pUI->isUp())    b->pt.addY( 1);
+      if (pUI->isDown())  b->pt.addY(-1);
    
       // rotate constantly
       b->rotation++;
    
       // draw
-      drawPolygon(b->pt, /*position*/
+      drawPolygon(b->rotation, /*position*/
                20, /* radius */
                b->sides /*segments*/,
                b->rotation /*rotation*/);
       
-      offset +=50;
+      offset +=20;
       vectorOffset++;
    }
    
-   
-   //std::cout << '\n';
+/*
+ ___  _ ____ ____ ____ ___
+ |  \ | |__/ |___ |     |
+ |__/ | |  \ |___ |___  |
 
+*/
    
+   Rifle r;
+   r.draw();
    
+   Velocity v(10);
+   
+   Bullet b;
+   b.setVelocity(v);
+   b.draw();
+   
+   Pigeon p;
+   p.draw();
+   
+   //drawRect(r.getLocation(), r.width, r.length, r.getOrientation());
+   //drawPolygon(r.pt, 5, 4, r.rotation+=10);
+   
+/*
+   ____ ____ _ ____ _ _  _ ____ _
+   |  | |__/ | | __ | |\ | |__| |
+   |__| |  \ | |__] | | \| |  | |___
+
+*/
 //   // move the polygon
 //   if (pUI->isRight())
 //      pBall->pt.addX(1);

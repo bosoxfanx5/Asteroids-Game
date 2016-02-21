@@ -11,18 +11,28 @@
 
 #include <stdio.h>
 #include "item.h"
+#include "uiDraw.h"
 
 class Rifle : Item
 {
    public:
-     Rifle() : length(10), width(30), pt() { }
+   //Rifle constructor contains defaults for all needed values
+   Rifle(int l = 60, int w = 10, int o = 135) : Item (200, -200)
+   {
+      setOrientation(o);
+            width  = w;
+            length = l;
+   }
    
-   // this is just for test purposes.  Don't make member variables public!
-   Point pt;          // location of the polygon on the screen
-   int sides;         // number of sides in the polygon.  Initially three
-   int rotation;      // the angle or orientation of the polygon
+   //Draw method lets the rifle draw itself on the screen
+   void draw() { drawRect(Item::getLocation(), length, width, Item::getOrientation()); }
+   
+   //We're calling these from their parent class
+   Point  getLocation()    { return Item::getLocation();    }
+   int getOrientation()    { return Item::getOrientation(); }
+   
    int length;
-   int width;
+   int  width;
 };
 
 #endif /* rifle_h */

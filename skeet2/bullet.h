@@ -11,10 +11,28 @@
 
 #include <stdio.h>
 #include "item.h"
+#include "uiDraw.h"
 
 class Bullet : Item
 {
-
+public:
+   //Bullet constructor contains defaults for all needed values
+   Bullet() : Item (100, -100) //Start location is center of gun.
+   {
+   }
+   
+   //Draw method lets the bullets draw themselves on the screen
+   void draw() { drawDot(Item::getLocation()); }
+   
+   //We're calling these from their parent class
+   Point    getLocation()  { return Item::getLocation();    }
+   int   getOrientation()  { return Item::getOrientation(); }
+   Velocity getVelocity()  { return Item::getVelocity();    }
+   
+   
+   void setLocation(       Point p) { Item::setLocation(p);    }
+   void setOrientation(      int o) { Item::setOrientation(o); }
+   void setVelocity(    Velocity v) { Item::setVelocity(v);    }
 };
 
 #endif /* bullet_h */

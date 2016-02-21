@@ -11,10 +11,28 @@
 
 #include <stdio.h>
 #include "item.h"
+#include "uiDraw.h"
 
 class Pigeon : Item
 {
-
+   public:
+   //Bullet constructor contains defaults for all needed values
+   Pigeon() : Item (-100, 100) //Start location is at left edge.
+   {
+   }
+   
+   //Draw method lets the pigeons draw themselves on the screen
+   void draw() { drawCircle(Item::getLocation(), 10); }
+   
+   //We're calling these from their parent class
+   Point    getLocation()  { return Item::getLocation();    }
+   int   getOrientation()  { return Item::getOrientation(); }
+   Velocity getVelocity()  { return Item::getVelocity();    }
+   
+   
+   void setLocation(       Point p) { Item::setLocation(p);    }
+   void setOrientation(      int o) { Item::setOrientation(o); }
+   void setVelocity(    Velocity v) { Item::setVelocity(v);    }
 };
 
 #endif /* pigeon_h */
