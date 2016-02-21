@@ -17,7 +17,7 @@ class Bullet : Item
 {
 public:
    //Bullet constructor contains defaults for all needed values
-   Bullet() : Item (100, -100) //Start location is center of gun.
+   Bullet() : Item (200, -200) //Start location is center of gun.
    {
    }
    

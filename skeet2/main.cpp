@@ -97,10 +97,10 @@ void callBack(const Interface *pUI, void * vp)
    b.setVelocity(v);
    b.draw();
    
-   for (int i = 0; i < 100; i++)
+   for (int i = 0; i < 10; i++)
    {
       Point bulletLocation = b.getLocation();
-      bulletLocation.addX(10);
+      bulletLocation.addX(-10);
       bulletLocation.addY(10);
       b.setLocation(bulletLocation);
       b.draw();
