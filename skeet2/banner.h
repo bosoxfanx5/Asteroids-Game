@@ -11,10 +11,13 @@
 
 #include <stdio.h>
 #include "item.h"
+#include "uiDraw.h"
 
-class Banner : Item
+class Banner
 {
-
+   public:
+   Banner() {};
+   void draw() {drawDigit(Point(180, 180), '5');}
 };
 
 #endif /* banner_h */

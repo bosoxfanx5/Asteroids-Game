@@ -11,6 +11,7 @@
 #include "rifle.h"
 #include "bullet.h"
 #include "pigeon.h"
+#include "banner.h"
 using namespace std;
 
 /************************************
@@ -100,6 +101,10 @@ void callBack(const Interface *pUI, void * vp)
    
    Pigeon p;
    p.draw();
+   
+   Banner banner;
+   banner.draw();
+   
    
    //drawRect(r.getLocation(), r.width, r.length, r.getOrientation());
    //drawPolygon(r.pt, 5, 4, r.rotation+=10);
