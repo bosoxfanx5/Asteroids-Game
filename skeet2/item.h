@@ -19,10 +19,12 @@ class Item
    Item();
    Item(int x, int y) { location.setX(x); location.setY(y); }
    
-   Point getLocation()     { return location;    }
-   int   getOrientation()  { return orientation; }
-   Velocity getVelocity()  { return velocity;    }
+   //Getters
+      Point getLocation()    { return location;    }
+        int getOrientation() { return orientation; }
+   Velocity getVelocity()    { return velocity;    }
    
+   //Setters
    void setLocation(       Point p) {    location = p; }
    void setOrientation(      int o) { orientation = o; }
    void setVelocity(    Velocity v) {    velocity = v; }

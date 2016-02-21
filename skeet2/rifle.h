@@ -25,11 +25,13 @@ class Rifle : Item
    }
    
    //Draw method lets the rifle draw itself on the screen
-   void draw() { drawRect(Item::getLocation(), length, width, Item::getOrientation()); }
+   void draw() { drawRect(Item::getLocation(), length, width,
+                          Item::getOrientation()); }
    
    //We're calling these from their parent class
-   Point  getLocation()    { return Item::getLocation();    }
-   int getOrientation()    { return Item::getOrientation(); }
+   //Getters and Getters
+    int getOrientation()      { return Item::getOrientation(); }
+   void setOrientation(int o) { Item::setOrientation(o); }
    
    int length;
    int  width;

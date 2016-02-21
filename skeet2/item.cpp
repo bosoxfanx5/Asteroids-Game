@@ -9,11 +9,6 @@
 #include "item.h"
 #include "point.h"
 
-//void draw()
-//{
-//
-//}
-
 void Item::move(Point & newLocation)
 {
    location.setX(newLocation.getX());
