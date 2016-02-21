@@ -14,7 +14,15 @@
 
 class Rifle : Item
 {
-
+   public:
+     Rifle() : length(10), width(30), pt() { }
+   
+   // this is just for test purposes.  Don't make member variables public!
+   Point pt;          // location of the polygon on the screen
+   int sides;         // number of sides in the polygon.  Initially three
+   int rotation;      // the angle or orientation of the polygon
+   int length;
+   int width;
 };
 
 #endif /* rifle_h */

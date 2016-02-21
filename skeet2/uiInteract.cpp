@@ -319,7 +319,7 @@ void Interface::run(void (*callBack)(const Interface *, void *), void *p)
    this->p = p;
    this->callBack = callBack;
 
-   glutMainLoop();
+   glutMainLoop(); 
 
    return;
 }

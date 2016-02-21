@@ -4,10 +4,11 @@
  * interface consisting of uiDraw and uiInteract
  ***************************************/
 
-
+#include <vector>
 #include "point.h"
 #include "uiInteract.h"
 #include "uiDraw.h"
+#include "rifle.h"
 using namespace std;
 
 /************************************
@@ -33,33 +34,77 @@ public:
  * time has passed and put the drawing on the screen.
  **************************************/
 void callBack(const Interface *pUI, void * p)
+//void callBack(const Interface *pUI, vector<Ball>& ballVector)
 {
-   Ball * pBall = (Ball *)p;  // cast the void pointer into a known type
+   //Ball * pBall = (Ball *)p;  // cast the void pointer into a known type
+   std::vector<Ball> ballVector = *(std::vector<Ball> *)p;
    
-   // move the polygon
-   if (pUI->isRight())
-      pBall->pt.addX(1);
-   if (pUI->isLeft())
-      pBall->pt.addX(-1);
-   if (pUI->isUp())
-      pBall->pt.addY(1);
-   if (pUI->isDown())
-      pBall->pt.addY(-1);
+   //Offset for testing...
+   int offset = 0;
+   int vectorOffset = 0;
    
-   // use the space bar to change the number of sides.
-   if (pUI->isSpace())
-      pBall->sides++;
-   if (pBall->sides == 12)
-      pBall->sides = 3;
+   //std::cout << "myvector contains:";
+   for (std::vector<Ball>::iterator it = ballVector.begin(); it != ballVector.end(); it++)
+   {
+      //std::cout << ' ' << *it;
+      
+      Ball * b = &(*it);
+      
+      b->pt.addX(offset);
+      b->pt.addY(offset);
+      
+      // move the polygon
+      if (pUI->isRight())
+         b->pt.addX(1);
+      if (pUI->isLeft())
+         b->pt.addX(-1);
+      if (pUI->isUp())
+         b->pt.addY(1);
+      if (pUI->isDown())
+         b->pt.addY(-1);
    
-   // rotate constantly
-   pBall->rotation++;
+      // rotate constantly
+      b->rotation++;
    
-   // draw
-   drawPolygon(pBall->pt, /*position*/
+      // draw
+      drawPolygon(b->pt, /*position*/
                20, /* radius */
-               pBall->sides /*segments*/,
-               pBall->rotation /*rotation*/);
+               b->sides /*segments*/,
+               b->rotation /*rotation*/);
+      
+      offset +=50;
+      vectorOffset++;
+   }
+   
+   
+   //std::cout << '\n';
+
+   
+   
+//   // move the polygon
+//   if (pUI->isRight())
+//      pBall->pt.addX(1);
+//   if (pUI->isLeft())
+//      pBall->pt.addX(-1);
+//   if (pUI->isUp())
+//      pBall->pt.addY(1);
+//   if (pUI->isDown())
+//      pBall->pt.addY(-1);
+//   
+//   // use the space bar to change the number of sides.
+//   if (pUI->isSpace())
+//      pBall->sides++;
+//   if (pBall->sides == 12)
+//      pBall->sides = 3;
+//   
+//   // rotate constantly
+//   pBall->rotation++;
+//   
+//   // draw
+//   drawPolygon(pBall->pt, /*position*/
+//               20, /* radius */
+//               pBall->sides /*segments*/,
+//               pBall->rotation /*rotation*/);
 }
 
 /*********************************
@@ -70,8 +115,15 @@ void callBack(const Interface *pUI, void * p)
 int main(int argc, char ** argv)
 {
    Interface ui(argc, argv, "Test", Point(-200, 200), Point(200, -200));    // initialize OpenGL
-   Ball ball;                           // initialize the game state
-   ui.run(callBack, &ball);             // set everything into action
+   Ball ball;
+   Ball ball2;                           // initialize the game state
+   Rifle rifle;
+   
+   int size = 2;
+   std::vector<Ball> ballVector(size);
+   
+   //ui.run(callBack, &ball);             // set everything into action
+   ui.run(callBack, &ballVector);         // set everything into action
    
    return 0;
 }
