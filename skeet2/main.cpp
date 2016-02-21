@@ -55,29 +55,27 @@ void callBack(const Interface *pUI, void * vp)
    //Iterate through vector that was passed in...
    for (std::vector<Ball>::iterator it  = ballVector.begin();
                                     it != ballVector.end();
-                                    it++)
+                                  ++it)
    {
-      //std::cout << ' ' << *it;
+      Ball * b = &(*it); //This works in place of it.
       
-      Ball * b = &(*it);
-      
-      b->pt.addX(offset);
-      b->pt.addY(offset);
+      it->pt.addX(offset);
+      it->pt.addY(offset);
       
       // move the polygon
-      if (pUI->isRight()) b->pt.addX( 1);
-      if (pUI->isLeft())  b->pt.addX(-1);
-      if (pUI->isUp())    b->pt.addY( 1);
-      if (pUI->isDown())  b->pt.addY(-1);
+      if (pUI->isRight()) it->pt.addX( 1);
+      if (pUI->isLeft())  it->pt.addX(-1);
+      if (pUI->isUp())    it->pt.addY( 1);
+      if (pUI->isDown())  it->pt.addY(-1);
    
       // rotate constantly
-      b->rotation++;
+      it->rotation++;
    
       // draw
-      drawPolygon(b->rotation, /*position*/
-               20, /* radius */
-               b->sides /*segments*/,
-               b->rotation /*rotation*/);
+      drawPolygon(it->rotation, //position//
+                  20,           // radius //
+                  it->sides,    //segments//
+                  it->rotation);//rotation//
       
       offset +=20;
       vectorOffset++;
@@ -98,6 +96,15 @@ void callBack(const Interface *pUI, void * vp)
    Bullet b;
    b.setVelocity(v);
    b.draw();
+   
+   for (int i = 0; i < 100; i++)
+   {
+      Point bulletLocation = b.getLocation();
+      bulletLocation.addX(10);
+      bulletLocation.addY(10);
+      b.setLocation(bulletLocation);
+      b.draw();
+   }
    
    Pigeon p;
    p.draw();
