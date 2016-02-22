@@ -59,6 +59,7 @@
 		84ABD5FB1C795BF7008FBB89 /* velocity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = velocity.h; sourceTree = "<group>"; };
 		84ABD6061C795D12008FBB89 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		84ABD6071C795D12008FBB89 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		84ABD60A1C7AE282008FBB89 /* todo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = todo.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +117,7 @@
 				84ABD5F61C795BF7008FBB89 /* uiDraw.cpp */,
 				84ABD5F91C795BF7008FBB89 /* uiInteract.h */,
 				84ABD5F81C795BF7008FBB89 /* uiInteract.cpp */,
+				84ABD60A1C7AE282008FBB89 /* todo.cpp */,
 			);
 			path = skeet2;
 			sourceTree = "<group>";

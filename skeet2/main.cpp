@@ -56,6 +56,7 @@ void callBack(const Interface *pUI, void * p)
    // rotate the rifle
    if (pUI->isRight()) pFrame->rifle.turnRight();
    if (pUI->isLeft())  pFrame->rifle.turnLeft();
+   if (pUI->isSpace()) pFrame->bulletVector();
    
    pFrame->rifle.draw();
    
