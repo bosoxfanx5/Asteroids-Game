@@ -12,6 +12,7 @@
 #include "bullet.h"
 #include "pigeon.h"
 #include "banner.h"
+#include "frame.h"
 using namespace std;
 
 /************************************
@@ -37,7 +38,7 @@ public:
  * time has passed and put the drawing on the screen.
  **************************************/
 //void callBack(const Interface *pUI, void * vp)
-void callBack(Interface *pUI, void * vp)
+void callBack(const Interface *pUI, void * p)
 {
 /*
   ___  __   __            __                  ___  __
@@ -46,6 +47,7 @@ void callBack(Interface *pUI, void * vp)
  
 */
    //Ball * pBall = (Ball *)p;  // cast the void pointer into a known type
+   std::vector<Ball> ballVector = *(std::vector<Ball> *)vp;
    std::vector<Ball> ballVector = *(std::vector<Ball> *)vp;
    
    //Offset for testing...
@@ -66,8 +68,8 @@ void callBack(Interface *pUI, void * vp)
       b->pt.addY(offset);
       
       // move the polygon
-      if (pUI->isRight()) pUI->rifle.turnRight();
-      if (pUI->isLeft())  pUI->rifle.turnLeft();
+      //if (pUI->isRight()) pUI->rifle.turnRight();
+      //if (pUI->isLeft())  pUI->rifle.turnLeft();
       
       if (pUI->isRight()) b->pt.addX( 1);
       if (pUI->isLeft())  b->pt.addX(-1);
@@ -165,8 +167,10 @@ void callBack(Interface *pUI, void * vp)
  *********************************/
 int main(int argc, char ** argv)
 {
-   Interface ui(argc, argv, "Test", Point(-200, 200), Point(200, -200));    // initialize OpenGL
-   Ball ball1;
+   //Interface ui(argc, argv, "Test", Point(-200, 200), Point(200, -200));    // initialize OpenGL
+   Interface ui(argc, argv, "Test");    // initialize OpenGL
+   
+   Frame mainFrame;
    Ball ball2;                           // initialize the game state
    //Rifle rifle;
    
@@ -177,7 +181,7 @@ int main(int argc, char ** argv)
    //itemVector.push_back(rifle);
    
    //ui.run(callBack, &ball);             // set everything into action
-   ui.run(callBack, &ballVector);         // set everything into action
+   ui.run(callBack, &mainFrame);         // set everything into action
    
    return 0;
 }
