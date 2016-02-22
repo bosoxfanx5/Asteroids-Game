@@ -18,6 +18,8 @@
 #define UI_INTERFACE_H
 
 #include "point.h"
+#include "rifle.h"
+
 #include <algorithm> // used for min() and max() (specifically required by Visual Studio)
 using std::min;
 using std::max;
@@ -45,7 +47,8 @@ public:
    ~Interface();
 
    // This will set the game in motion
-   void run(void (*callBack)(const Interface *, void *), void *p);
+   //void run(void (*callBack)(const Interface *, void *), void *p);
+   void run(void (*callBack)( Interface *, void *), void *p);
 
    // Is it time to redraw the screen
    bool isTimeToDraw();
@@ -75,7 +78,15 @@ public:
    bool isSpace()     const { return isSpacePress; };
    
    static void *p;                   // for client
-   static void (*callBack)(const Interface *, void *);
+   //static void (*callBack)(const Interface *, void *);
+   static void (*callBack)( Interface *, void *);
+   
+   //////////////////OUR CODE////////////////////
+   
+   Rifle rifle;
+   void drawRifle() {rifle.draw();}
+   
+   ////////////////END OUR CODE//////////////////
 
 private:
    void initialize(int argc, char ** argv, const char * title, Point topLeft, Point bottomRight);

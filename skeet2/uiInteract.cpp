@@ -244,7 +244,8 @@ bool         Interface::initialized  = false;
 double       Interface::timePeriod   = 1.0 / 30; // default to 30 frames/second
 unsigned int Interface::nextTick     = 0;        // redraw now please
 void *       Interface::p            = NULL;
-void (*Interface::callBack)(const Interface *, void *) = NULL;
+//void (*Interface::callBack)(const Interface *, void *) = NULL;
+void (*Interface::callBack)(Interface *, void *) = NULL;
 
 
 /************************************************************************
@@ -313,7 +314,8 @@ void Interface::initialize(int argc, char ** argv, const char * title, Point top
  *                   will need to cast this back to your own data
  *                   type before using it.
  *************************************************************************/
-void Interface::run(void (*callBack)(const Interface *, void *), void *p)
+//void Interface::run(void (*callBack)(const Interface *, void *), void *p)
+void Interface::run(void (*callBack)(Interface *, void *), void *p)
 {
    // setup the callbacks
    this->p = p;
@@ -323,4 +325,3 @@ void Interface::run(void (*callBack)(const Interface *, void *), void *p)
 
    return;
 }
-

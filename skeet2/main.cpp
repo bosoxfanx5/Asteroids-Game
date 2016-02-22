@@ -36,8 +36,8 @@ public:
  * engine will wait until the proper amount of
  * time has passed and put the drawing on the screen.
  **************************************/
-void callBack(const Interface *pUI, void * vp)
-//void callBack(const Interface *pUI, vector<Ball>& ballVector)
+//void callBack(const Interface *pUI, void * vp)
+void callBack(Interface *pUI, void * vp)
 {
 /*
   ___  __   __            __                  ___  __
@@ -57,25 +57,33 @@ void callBack(const Interface *pUI, void * vp)
                                     it != ballVector.end();
                                   ++it)
    {
-      Ball * b = &(*it); //This works in place of it.
+      //Ball * b = &(*it); //This works in place of it.
+      //Ball * b = &ballVector[vectorOffset];
+      Ball * b = &ballVector[vectorOffset];
       
-      it->pt.addX(offset);
-      it->pt.addY(offset);
+      
+      b->pt.addX(offset);
+      b->pt.addY(offset);
       
       // move the polygon
-      if (pUI->isRight()) it->pt.addX( 1);
-      if (pUI->isLeft())  it->pt.addX(-1);
-      if (pUI->isUp())    it->pt.addY( 1);
-      if (pUI->isDown())  it->pt.addY(-1);
+      if (pUI->isRight()) pUI->rifle.turnRight();
+      if (pUI->isLeft())  pUI->rifle.turnLeft();
+      
+      if (pUI->isRight()) b->pt.addX( 1);
+      if (pUI->isLeft())  b->pt.addX(-1);
+      if (pUI->isUp())    b->pt.addY( 1);
+      if (pUI->isDown())  b->pt.addY(-1);
    
       // rotate constantly
-      it->rotation++;
+      b->rotation++;
    
       // draw
-      drawPolygon(it->rotation, //position//
+      drawPolygon(b->rotation, //position//
                   20,           // radius //
-                  it->sides,    //segments//
-                  it->rotation);//rotation//
+                  b->sides,    //segments//
+                  b->rotation);//rotation//
+      
+      ballVector[vectorOffset] = *b;
       
       offset +=20;
       vectorOffset++;
@@ -88,8 +96,10 @@ void callBack(const Interface *pUI, void * vp)
 
 */
    
-   Rifle r;
-   r.draw();
+   //Rifle r;
+   //r.draw();
+   
+   pUI->drawRifle();
    
    Velocity v(10);
    
@@ -156,12 +166,15 @@ void callBack(const Interface *pUI, void * vp)
 int main(int argc, char ** argv)
 {
    Interface ui(argc, argv, "Test", Point(-200, 200), Point(200, -200));    // initialize OpenGL
-   Ball ball;
+   Ball ball1;
    Ball ball2;                           // initialize the game state
-   Rifle rifle;
+   //Rifle rifle;
    
    int size = 2;
    std::vector<Ball> ballVector(size);
+   //std::vector<Item> itemVector(size);
+   
+   //itemVector.push_back(rifle);
    
    //ui.run(callBack, &ball);             // set everything into action
    ui.run(callBack, &ballVector);         // set everything into action

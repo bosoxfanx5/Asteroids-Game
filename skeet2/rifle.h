@@ -31,7 +31,9 @@ class Rifle : Item
    //We're calling these from their parent class
    //Getters and Getters
     int getOrientation()      { return Item::getOrientation(); }
-   void setOrientation(int o) { Item::setOrientation(o); }
+   void setOrientation(int o) { Item::setOrientation(o);       }
+   void turnRight() {Item::setOrientation(Item::getOrientation()-1);}
+   void turnLeft()  {Item::setOrientation(Item::getOrientation()+1);}
    
    int length;
    int  width;
