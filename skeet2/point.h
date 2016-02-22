@@ -16,7 +16,7 @@
 
 /*********************************************
  * POINT
- * A single position.  
+ * A single position.
  *********************************************/
 class Point
 {
@@ -25,17 +25,17 @@ public:
    Point()            : x(0.0), y(0.0)  {}
    Point(bool check)  : x(0.0), y(0.0)  {}
    Point(float x, float y);
-
+   
    // getters
    float getX()       const { return x;              }
    float getY()       const { return y;              }
-
+   
    // setters
    void setX(float x);
    void setY(float y);
    void addX(float dx)      { setX(getX() + dx);     }
    void addY(float dy)      { setY(getY() + dy);     }
-
+   
 private:
    float x;           // horizontal position
    float y;           // vertical position

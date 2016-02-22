@@ -10,6 +10,7 @@
 #define frame_h
 
 #include <stdio.h>
+#include <vector>
 #include "rifle.h"
 #include "pigeon.h"
 #include "bullet.h"
@@ -43,9 +44,10 @@ class Frame
 {
    public:
       //Member Data
-      Rifle rifles;
-      Pigeon pigeons;
-      Bullet bullets; // <= 5
+      Rifle rifle;
+      Pigeon pigeon;
+      //std::vector<Pigeon> pigeonVector(size);
+      std::vector<Bullet> bulletVector(); // <= 5
       Banner banner;
       int frameRate = 30;
       void draw();

@@ -6,7 +6,9 @@
 //  Copyright © 2016 BYU. All rights reserved.
 //
 
+#ifndef Frame
 #include "frame.h"
+#endif // Frame
 
 //#define LINUX
 #define MAC_XCODE

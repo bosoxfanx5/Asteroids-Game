@@ -47,49 +47,58 @@ void callBack(const Interface *pUI, void * p)
  
 */
    //Ball * pBall = (Ball *)p;  // cast the void pointer into a known type
-   std::vector<Ball> ballVector = *(std::vector<Ball> *)vp;
-   std::vector<Ball> ballVector = *(std::vector<Ball> *)vp;
+   //std::vector<Ball> ballVector = *(std::vector<Ball> *)vp;
+   //std::vector<Ball> ballVector = *(std::vector<Ball> *)vp;
+   
+   
+   Frame * pFrame = (Frame *)p;  // cast the void pointer into a known type
+   
+   // rotate the rifle
+   if (pUI->isRight()) pFrame->rifle.turnRight();
+   if (pUI->isLeft())  pFrame->rifle.turnLeft();
+   
+   pFrame->rifle.draw();
    
    //Offset for testing...
    int offset = 0; //to sepearate objects
    int vectorOffset = 0;
    
    //Iterate through vector that was passed in...
-   for (std::vector<Ball>::iterator it  = ballVector.begin();
-                                    it != ballVector.end();
-                                  ++it)
-   {
-      //Ball * b = &(*it); //This works in place of it.
-      //Ball * b = &ballVector[vectorOffset];
-      Ball * b = &ballVector[vectorOffset];
-      
-      
-      b->pt.addX(offset);
-      b->pt.addY(offset);
-      
-      // move the polygon
-      //if (pUI->isRight()) pUI->rifle.turnRight();
-      //if (pUI->isLeft())  pUI->rifle.turnLeft();
-      
-      if (pUI->isRight()) b->pt.addX( 1);
-      if (pUI->isLeft())  b->pt.addX(-1);
-      if (pUI->isUp())    b->pt.addY( 1);
-      if (pUI->isDown())  b->pt.addY(-1);
-   
-      // rotate constantly
-      b->rotation++;
-   
-      // draw
-      drawPolygon(b->rotation, //position//
-                  20,           // radius //
-                  b->sides,    //segments//
-                  b->rotation);//rotation//
-      
-      ballVector[vectorOffset] = *b;
-      
-      offset +=20;
-      vectorOffset++;
-   }
+//   for (std::vector<Ball>::iterator it  = ballVector.begin();
+//                                    it != ballVector.end();
+//                                  ++it)
+//   {
+//      //Ball * b = &(*it); //This works in place of it.
+//      //Ball * b = &ballVector[vectorOffset];
+//      //Ball * b = &ballVector[vectorOffset];
+//      
+//      
+//      b->pt.addX(offset);
+//      b->pt.addY(offset);
+//      
+//      // move the polygon
+//      //if (pUI->isRight()) pUI->rifle.turnRight();
+//      //if (pUI->isLeft())  pUI->rifle.turnLeft();
+//      
+//      if (pUI->isRight()) b->pt.addX( 1);
+//      if (pUI->isLeft())  b->pt.addX(-1);
+//      if (pUI->isUp())    b->pt.addY( 1);
+//      if (pUI->isDown())  b->pt.addY(-1);
+//   
+//      // rotate constantly
+//      b->rotation++;
+//   
+//      // draw
+//      drawPolygon(b->rotation, //position//
+//                  20,           // radius //
+//                  b->sides,    //segments//
+//                  b->rotation);//rotation//
+//      
+//      ballVector[vectorOffset] = *b;
+//      
+//      offset +=20;
+//      vectorOffset++;
+//   }
    
 /*
  ___  _ ____ ____ ____ ___
@@ -101,7 +110,7 @@ void callBack(const Interface *pUI, void * p)
    //Rifle r;
    //r.draw();
    
-   pUI->drawRifle();
+   //pUI->drawRifle();
    
    Velocity v(10);
    
@@ -118,8 +127,8 @@ void callBack(const Interface *pUI, void * p)
       b.draw();
    }
    
-   Pigeon p;
-   p.draw();
+   //Pigeon p;
+   //p.draw();
    
    Banner banner;
    banner.draw();
@@ -167,8 +176,8 @@ void callBack(const Interface *pUI, void * p)
  *********************************/
 int main(int argc, char ** argv)
 {
-   //Interface ui(argc, argv, "Test", Point(-200, 200), Point(200, -200));    // initialize OpenGL
-   Interface ui(argc, argv, "Test");    // initialize OpenGL
+   Interface ui(argc, argv, "Test", Point(-200, 200), Point(200, -200));    // initialize OpenGL
+   //Interface ui(argc, argv, "Test");    // initialize OpenGL
    
    Frame mainFrame;
    Ball ball2;                           // initialize the game state
