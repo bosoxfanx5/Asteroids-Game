@@ -34,7 +34,9 @@ public:
    void setLocation(       Point p) { Item::setLocation(p);    }
    void setOrientation(      int o) { Item::setOrientation(o); }
    void setVelocity(    Velocity v) { Item::setVelocity(v);    }
-    void setAngle(           int a) {Item:setAngle(a);         }
+   void setAngle(           int a)  { Item:setAngle(a);        }
+   
+   void move();
 };
 
 #endif /* bullet_h */

@@ -57,22 +57,30 @@ void callBack(const Interface *pUI, void * p)
    if (pUI->isRight()) pFrame->rifle.turnRight();
    if (pUI->isLeft())  pFrame->rifle.turnLeft();
    if (pUI->isSpace()) pFrame->rifle.fireRifle(pFrame->bulletVector);
-   
-   
     
-    for (std::vector<Bullet>::iterator it  = pFrame->bulletVector.begin();
-                                             it != pFrame->bulletVector.end();
-                                           ++it)
-    {
-        Bullet * b = &(*it);
-        b->draw();
-    }
-
-   pFrame->rifle.draw();
    
    //Offset for testing...
    int offset = 0; //to sepearate objects
    int vectorOffset = 0;
+   for (std::vector<Bullet>::iterator it  = pFrame->bulletVector.begin();
+                                      it != pFrame->bulletVector.end();
+                                    ++it)
+    {
+        //Bullet * b = &(*it);
+       
+        //b is a pointer to a bullet in the vector
+        Bullet * b = &pFrame->bulletVector[vectorOffset];
+       
+        //Draw the bullet at it's current location
+        b->draw();
+       
+        //Move the bullet using it's own move method.
+        b->move();
+    }
+
+   pFrame->rifle.draw();
+   
+
    
    //Iterate through vector that was passed in...
 //   for (std::vector<Ball>::iterator it  = ballVector.begin();

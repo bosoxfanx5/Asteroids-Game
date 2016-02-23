@@ -20,6 +20,7 @@ public:
    Velocity()      {hypotenuse = 0;}
    Velocity(int h) {hypotenuse = h;}
    void setSpeed(int s) {hypotenuse = s;}  //protected?
+   Point getSlope() {return slope;}
    
    private:
     Point slope;
