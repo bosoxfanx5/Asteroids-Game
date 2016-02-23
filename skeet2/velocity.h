@@ -19,12 +19,16 @@ class Velocity
 public:
    Velocity()      {hypotenuse = 0;}
    Velocity(int h) {hypotenuse = h;}
+   void setSpeed(int s) {hypotenuse = s;}  //protected?
    
    private:
-   Point slope;
+    Point slope;
+    
+    void setAngle(int a) {angle = a; convertSlope();}
+    
    
-   float hypotenuse = 0; //speed in pixels per frame
-   float angle = 0;
+    float hypotenuse = 0; //speed in pixels per frame
+    float angle = 0;
    
-   void convertSlope();
+    void convertSlope();
 };

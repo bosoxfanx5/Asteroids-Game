@@ -35,10 +35,12 @@ class Item
    
    private:
    //Member Data
-   Velocity velocity;
    Point location;   // location of the polygon on the screen
    int orientation;  // the angle or orientation of the polygon
    
+   protected:
+    Velocity velocity;
+    
 };
 
 #endif /* item_h */

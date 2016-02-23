@@ -47,7 +47,7 @@ class Frame
       Rifle rifle;
       Pigeon pigeon;
       //std::vector<Pigeon> pigeonVector(size);
-      std::vector<Bullet> bulletVector(); // <= 5
+      std::vector<Bullet> bulletVector; // <= 5
       Banner banner;
       int frameRate = 30;
       void draw();

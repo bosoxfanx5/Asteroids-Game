@@ -19,6 +19,7 @@ public:
    //Bullet constructor contains defaults for all needed values
    Bullet() : Item (200, -200) //Start location is center of gun.
    {
+       velocity.setSpeed(10);
    }
    
    //Draw method lets the bullets draw themselves on the screen
@@ -33,6 +34,7 @@ public:
    void setLocation(       Point p) { Item::setLocation(p);    }
    void setOrientation(      int o) { Item::setOrientation(o); }
    void setVelocity(    Velocity v) { Item::setVelocity(v);    }
+    void setAngle(           int a) {Item:setAngle(a);         }
 };
 
 #endif /* bullet_h */

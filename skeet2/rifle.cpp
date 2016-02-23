@@ -20,3 +20,11 @@ void Rifle :: turnRight()
        Item::setOrientation(Item::getOrientation()-1);
 
 }
+
+void Rifle :: fireRifle(std::vector <Bullet> & bulletVector)
+{
+    Bullet b;
+    b.setAngle(this->getOrientation());
+    bulletVector.push_back(b);
+    
+}

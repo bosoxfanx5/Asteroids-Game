@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include "item.h"
 #include "uiDraw.h"
+#include <vector>
+#include "bullet.h"
 #define rifleAngleMax 180
 #define rifleAngleMin 90
 class Rifle : Item
@@ -26,7 +28,7 @@ class Rifle : Item
    }
    
    //Draw method lets the rifle draw itself on the screen
-   void draw() { drawRect(Item::getLocation(), length, width,
+    void draw() { drawRect(Item::getLocation(), length, width,
                           Item::getOrientation()); }
    
    //We're calling these from their parent class
@@ -35,9 +37,10 @@ class Rifle : Item
     void setOrientation(int o) { Item::setOrientation(o);       }
     void turnRight();
     void turnLeft();
+    void fireRifle(std::vector <Bullet> & bulletVector);
    
-   int length;
-   int  width;
+    int length;
+    int  width;
 };
 
 #endif /* rifle_h */

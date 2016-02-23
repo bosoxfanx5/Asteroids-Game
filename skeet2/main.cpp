@@ -53,10 +53,21 @@ void callBack(const Interface *pUI, void * p)
    
    Frame * pFrame = (Frame *)p;  // cast the void pointer into a known type
    
-   // rotate the rifle
+   // rotate and fire the rifle
    if (pUI->isRight()) pFrame->rifle.turnRight();
    if (pUI->isLeft())  pFrame->rifle.turnLeft();
+   if (pUI->isSpace()) pFrame->rifle.fireRifle(pFrame->bulletVector);
    
+   
+    
+    for (std::vector<Bullet>::iterator it  = pFrame->bulletVector.begin();
+                                             it != pFrame->bulletVector.end();
+                                           ++it)
+    {
+        Bullet * b = &(*it);
+        b->draw();
+    }
+
    pFrame->rifle.draw();
    
    //Offset for testing...
