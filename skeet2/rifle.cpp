@@ -7,3 +7,16 @@
 //
 
 #include "rifle.h"
+void Rifle :: turnLeft()
+{
+    if (this->getOrientation() < rifleAngleMax)
+       Item::setOrientation(Item::getOrientation()+1);
+
+}
+
+void Rifle :: turnRight()
+{
+    if (this->getOrientation() > rifleAngleMin)
+       Item::setOrientation(Item::getOrientation()-1);
+
+}
