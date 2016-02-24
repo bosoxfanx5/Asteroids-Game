@@ -11,10 +11,10 @@
 
 void Velocity :: convertSlope()
 {
+    //tease out x and y of the slope from the angle
     int x = hypotenuse * cos(this->angle * (M_PI / 180));
     int y = hypotenuse * sin(this->angle * (M_PI / 180));
-    
+   
     this->slope.setX(x);
     this->slope.setY(y);
-
 }

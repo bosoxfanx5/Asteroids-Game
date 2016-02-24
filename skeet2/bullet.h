@@ -38,7 +38,7 @@ public:
    //BAD ACCESS ERROR
    //void setAngle(           int a)  { Item:setAngle(a);        }
    
-   void move();
+   void move() { Item::move(); }
 };
 
 #endif /* bullet_h */

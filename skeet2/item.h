@@ -30,6 +30,7 @@ class Item
    void setVelocity(    Velocity v) {    velocity = v; }
 
    void draw();
+   void move();
    void move(Point & newLocation);
    void turn(int newOrientation);
    

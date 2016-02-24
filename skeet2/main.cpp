@@ -61,7 +61,6 @@ void callBack(const Interface *pUI, void * p)
     
    
    //Offset for testing...
-   int offset = 0; //to sepearate objects
    int vectorOffset = 0;
    for (std::vector<Bullet>::iterator it  = pFrame->bulletVector.begin();
                                       it != pFrame->bulletVector.end();
@@ -77,14 +76,18 @@ void callBack(const Interface *pUI, void * p)
        
         //Draw the bullet at it's current location
         b->draw();
-               
+       
+        //If location has not changed on a bullet we want to know about it
         assert(                                   b->getLocation()
                == pFrame->bulletVector[vectorOffset].getLocation());
        
-       Point bulletLocation = b->getLocation();
        
-        pFrame->bulletVector[vectorOffset].setLocation(bulletLocation);
-    }
+        Point bulletLocation = b->getLocation();
+       
+        pFrame->bulletVector[vectorOffset++].setLocation(bulletLocation);
+       
+       cerr << "Bullet Number: " << vectorOffset << endl;
+    } 
 
    pFrame->rifle.draw();
    
