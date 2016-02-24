@@ -84,8 +84,15 @@ void callBack(const Interface *pUI, void * p)
        
         Point bulletLocation = b->getLocation();
        
-        pFrame->bulletVector[vectorOffset++].setLocation(bulletLocation);
-       
+        if (bulletLocation.getX() < -200 || bulletLocation.getX() > 200 ||
+            bulletLocation.getY() < -200 || bulletLocation.getY() > 200)
+        {
+           pFrame->bulletVector.erase(it);
+        }
+        else
+        {
+           pFrame->bulletVector[vectorOffset++].setLocation(bulletLocation);
+        }
        cerr << "Bullet Number: " << vectorOffset << endl;
     } 
 
