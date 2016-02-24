@@ -36,6 +36,8 @@ public:
    void addX(float dx)      { setX(getX() + dx);     }
    void addY(float dy)      { setY(getY() + dy);     }
    
+   bool operator == (Point rhs);
+   
 private:
    float x;           // horizontal position
    float y;           // vertical position

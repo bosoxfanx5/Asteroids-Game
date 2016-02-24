@@ -13,6 +13,7 @@
 #include "pigeon.h"
 #include "banner.h"
 #include "frame.h"
+#include "assert.h"
 using namespace std;
 
 /************************************
@@ -71,11 +72,18 @@ void callBack(const Interface *pUI, void * p)
         //b is a pointer to a bullet in the vector
         Bullet * b = &pFrame->bulletVector[vectorOffset];
        
-        //Draw the bullet at it's current location
-        b->draw();
-       
         //Move the bullet using it's own move method.
         b->move();
+       
+        //Draw the bullet at it's current location
+        b->draw();
+               
+        assert(                                   b->getLocation()
+               == pFrame->bulletVector[vectorOffset].getLocation());
+       
+       Point bulletLocation = b->getLocation();
+       
+        pFrame->bulletVector[vectorOffset].setLocation(bulletLocation);
     }
 
    pFrame->rifle.draw();
@@ -134,17 +142,17 @@ void callBack(const Interface *pUI, void * p)
    Velocity v(10);
    
    Bullet b;
-   b.setVelocity(v);
-   b.draw();
+   //b.setVelocity(v);
+   //b.draw();
    
-   for (int i = 0; i < 10; i++)
-   {
-      Point bulletLocation = b.getLocation();
-      bulletLocation.addX(-10);
-      bulletLocation.addY(10);
-      b.setLocation(bulletLocation);
-      b.draw();
-   }
+//   for (int i = 0; i < 10; i++)
+//   {
+//      Point bulletLocation = b.getLocation();
+//      bulletLocation.addX(-10);
+//      bulletLocation.addY(10);
+//      b.setLocation(bulletLocation);
+//      b.draw();
+//   }
    
    //Pigeon p;
    //p.draw();

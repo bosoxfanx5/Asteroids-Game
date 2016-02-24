@@ -22,10 +22,11 @@ public:
    void setSpeed(int s) {hypotenuse = s;}  //protected?
    Point getSlope() {return slope;}
    
-   private:
+   void setAngle(int a) {angle = a; convertSlope();}
+   
+private:
     Point slope;
     
-    void setAngle(int a) {angle = a; convertSlope();}
     
    
     float hypotenuse = 0; //speed in pixels per frame

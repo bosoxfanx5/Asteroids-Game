@@ -23,8 +23,21 @@ void Rifle :: turnRight()
 
 void Rifle :: fireRifle(std::vector <Bullet> & bulletVector)
 {
-    Bullet b;
-    b.setAngle(this->getOrientation());
-    bulletVector.push_back(b);
-    
+    //If we have less than 5 bullets in the vector
+    if (bulletVector.size() <= 5)
+    {
+       //create a new bullet
+       Bullet b;
+       
+       //set the bullet's orientation to the angle of the rifle
+       b.setOrientation(this->getOrientation());
+       
+       Velocity v;
+       v.setSpeed(10);
+       v.setAngle(this->getOrientation());
+       
+       b.setVelocity(v);
+       
+       bulletVector.push_back(b);
+    }
 }

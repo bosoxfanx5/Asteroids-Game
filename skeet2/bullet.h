@@ -31,12 +31,12 @@ public:
    Velocity getVelocity()  { return Item::getVelocity();    }
    
    
-   void setLocation(       Point p) { Item::setLocation(p);    }
+   void setLocation(       Point & p) { Item::setLocation(p);    }
    void setOrientation(      int o) { Item::setOrientation(o); }
    void setVelocity(    Velocity v) { Item::setVelocity(v);    }
    
    //BAD ACCESS ERROR
-   void setAngle(           int a)  { Item:setAngle(a);        }
+   //void setAngle(           int a)  { Item:setAngle(a);        }
    
    void move();
 };

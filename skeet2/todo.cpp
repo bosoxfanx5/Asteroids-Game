@@ -5,4 +5,4 @@ detect collisions
 increment scores
 
 ERRORS
-fix BAD ACCESS ERROR in /Users/admin/Documents/skeet2/skeet2/bullet.h line 39
+fix BAD ACCESS ERROR in /Users/admin/Documents/skeet2/skeet2/bullet.h line 39 - fixed
