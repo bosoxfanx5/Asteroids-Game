@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "item.h"
 #include "uiDraw.h"
+#include <vector>
 
 class Pigeon : Item
 {
@@ -22,17 +23,24 @@ class Pigeon : Item
    }
    
    //Draw method lets the pigeons draw themselves on the screen
-   void draw() { drawCircle(Item::getLocation(), 10); }
+   void draw() { drawCircle(Item::getLocation(), 20); }
    
    //We're calling these from their parent class
    Point    getLocation()  { return Item::getLocation();    }
    int   getOrientation()  { return Item::getOrientation(); }
    Velocity getVelocity()  { return Item::getVelocity();    }
    
+   Point origin;
+   Point destination;
    
    void setLocation(       Point p) { Item::setLocation(p);    }
    void setOrientation(      int o) { Item::setOrientation(o); }
    void setVelocity(    Velocity v) { Item::setVelocity(v);    }
+   
+   void move() { Item::move();    }
+   //void launch(std::vector <Pigeon> & pigeonVector);
+   static void launch(std::vector <Pigeon> & pigeonVector);
+   
 };
 
 #endif /* pigeon_h */

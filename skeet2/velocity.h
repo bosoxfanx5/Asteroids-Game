@@ -22,6 +22,7 @@ public:
    
    void setSpeed(int s) { hypotenuse = s; }  //protected?
    Point getSlope()     { return slope; }
+   void setSlope(Point p)     { slope = p; }
    
    void setAngle(int a) {angle = a; convertSlope();}
    

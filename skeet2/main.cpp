@@ -88,13 +88,61 @@ void callBack(const Interface *pUI, void * p)
             bulletLocation.getY() < -200 || bulletLocation.getY() > 200)
         {
            pFrame->bulletVector.erase(it);
+           break;
         }
         else
         {
            pFrame->bulletVector[vectorOffset++].setLocation(bulletLocation);
         }
        cerr << "Bullet Number: " << vectorOffset << endl;
-    } 
+    }
+   
+   //reset to 0;
+   vectorOffset = 0;
+   if (pFrame->pigeonVector.size() == 0)
+   {
+      cerr << "Initial Pigeon Count: " << pFrame->pigeonVector.size() << endl;
+      Pigeon::launch(pFrame->pigeonVector);
+      cerr << "First Pigeon Created Count: " << pFrame->pigeonVector.size() << endl;
+   }
+   
+   for (std::vector<Pigeon>::iterator it = pFrame->pigeonVector.begin();
+        it != pFrame->pigeonVector.end();
+        ++it)
+   {
+      //Bullet * b = &(*it);
+      
+      //b is a pointer to a bullet in the vector
+      Pigeon * pig = &pFrame->pigeonVector[vectorOffset];
+      
+      //Move the bullet using it's own move method.
+      pig->move();
+      
+      //Draw the bullet at it's current location
+      pig->draw();
+      
+      //If location has not changed on a bullet we want to know about it
+      assert(                                   pig->getLocation()
+               == pFrame->pigeonVector[vectorOffset].getLocation());
+      
+      
+      Point pigeonLocation = pig->getLocation();
+      
+      if (pigeonLocation.getX() < -200 || pigeonLocation.getX() > 210 ||
+          pigeonLocation.getY() < -200 || pigeonLocation.getY() > 210)
+      {
+         pFrame->pigeonVector.erase(it);
+         break;
+         //pig->launch(pFrame->pigeonVector);
+         //vectorOffset++;
+      }
+      else
+      {
+         pFrame->pigeonVector[vectorOffset++].setLocation(pigeonLocation);
+      }
+      cerr << "Pigeon Count: " << pFrame->pigeonVector.size() << endl;
+   }
+   
 
    pFrame->rifle.draw();
    
