@@ -16,22 +16,22 @@
 class Banner
 {
    public:
-   Banner() : leftChar('0'), rightChar('0') {};
+   Banner() : l(0), r(0) {};
    
    //Draw Methods
-   void draw()               {drawDigit(Point( 180, 180), rightChar);
-                              drawDigit(Point(-180, 180), leftChar);}
+   void draw();
    
-   void draw(char l, char r) { leftChar  = l;
-                               rightChar = r;
-      
-                              drawDigit(Point( 180, 180), rightChar);
-                              drawDigit(Point(-180, 180), leftChar);}
+   void update( int lin,  int rin) { l = lin + 48; r = rin + 48;}
+   
+   void incrementL() { l++; }
+   void incrementR() { r++; }
    
    
-   char  leftChar;
-   char rightChar;
-   
+private:
+   int l;
+   int r;
+   int  mostSignificantBit(int a);
+   int leastSignificantBit(int a);
 };
 
 #endif /* banner_h */

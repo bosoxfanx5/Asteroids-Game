@@ -53,6 +53,7 @@ void callBack(const Interface *pUI, void * p)
    
    
    Frame * pFrame = (Frame *)p;  // cast the void pointer into a known type
+   pFrame->banner.draw();
    
    // rotate and fire the rifle
    if (pUI->isRight()) pFrame->rifle.turnRight();
@@ -60,15 +61,12 @@ void callBack(const Interface *pUI, void * p)
    if (pUI->isSpace()) pFrame->rifle.fireRifle(pFrame->bulletVector);
     
    
-   //Offset for testing...
+   //BULLETS
    int vectorOffset = 0;
    for (std::vector<Bullet>::iterator it  = pFrame->bulletVector.begin();
                                       it != pFrame->bulletVector.end();
                                     ++it)
-    {
-        //Bullet * b = &(*it);
-       
-        //b is a pointer to a bullet in the vector
+    {   //b is a pointer to a bullet in the vector
         Bullet * b = &pFrame->bulletVector[vectorOffset];
        
         //Move the bullet using it's own move method.
@@ -87,8 +85,12 @@ void callBack(const Interface *pUI, void * p)
         if (bulletLocation.getX() < -200 || bulletLocation.getX() > 200 ||
             bulletLocation.getY() < -200 || bulletLocation.getY() > 200)
         {
+           //Increment the counter on missed shots...
+           pFrame->banner.incrementR();
+           
+           //delete pigeon
            pFrame->bulletVector.erase(it);
-           break;
+           break; //break out of the loop
         }
         else
         {
@@ -97,7 +99,7 @@ void callBack(const Interface *pUI, void * p)
        cerr << "Bullet Number: " << vectorOffset << endl;
     }
    
-   //reset to 0;
+   //PIGEONS
    vectorOffset = 0;
    if (pFrame->pigeonVector.size() < 1)
    //if (pFrame->pigeonVector.size() == 0)
@@ -111,18 +113,16 @@ void callBack(const Interface *pUI, void * p)
         it != pFrame->pigeonVector.end();
         ++it)
    {
-      //Bullet * b = &(*it);
-      
-      //b is a pointer to a bullet in the vector
+      //p is a pointer to a pigeon in the vector
       Pigeon * pig = &pFrame->pigeonVector[vectorOffset];
       
-      //Move the bullet using it's own move method.
+      //Move the pigeon using it's own move method.
       pig->move();
       
-      //Draw the bullet at it's current location
+      //Draw the pigeon at it's current location
       pig->draw();
       
-      //If location has not changed on a bullet we want to know about it
+      //If location has not changed on a pigeon we want to know about it
       assert(                                   pig->getLocation()
                == pFrame->pigeonVector[vectorOffset].getLocation());
       
@@ -132,10 +132,12 @@ void callBack(const Interface *pUI, void * p)
       if (pigeonLocation.getX() < -200 || pigeonLocation.getX() > 210 ||
           pigeonLocation.getY() < -200 || pigeonLocation.getY() > 210)
       {
+         //Increment the counter on missed pigeons...
+         pFrame->banner.incrementL();
+         
+         //delete pigeon
          pFrame->pigeonVector.erase(it);
-         break;
-         //pig->launch(pFrame->pigeonVector);
-         //vectorOffset++;
+         break; //break out of the loop
       }
       else
       {
@@ -198,9 +200,9 @@ void callBack(const Interface *pUI, void * p)
    
    //pUI->drawRifle();
    
-   Velocity v(10);
+   //Velocity v(10);
    
-   Bullet b;
+   //Bullet b;
    //b.setVelocity(v);
    //b.draw();
    
@@ -216,8 +218,8 @@ void callBack(const Interface *pUI, void * p)
    //Pigeon p;
    //p.draw();
    
-   Banner banner;
-   banner.draw();
+   //Banner banner;
+   //banner.draw();
    
    
    //drawRect(r.getLocation(), r.width, r.length, r.getOrientation());
