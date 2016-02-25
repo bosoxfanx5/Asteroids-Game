@@ -99,7 +99,7 @@ void callBack(const Interface *pUI, void * p)
    
    //reset to 0;
    vectorOffset = 0;
-   if (pFrame->pigeonVector.size() < 20)
+   if (pFrame->pigeonVector.size() < 1)
    //if (pFrame->pigeonVector.size() == 0)
    {
       cerr << "Initial Pigeon Count: " << pFrame->pigeonVector.size() << endl;

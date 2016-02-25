@@ -451,14 +451,18 @@ void drawCircle(const Point & center, int radius)
    const double increment = 1.0 / (double)radius;
 
    // begin drawing
+   glColor3f(0.0 /* red % */, 1.0 /* green % */, 0.0 /* blue % */);
    glBegin(GL_LINE_LOOP);
 
    // go around the circle
    for (double radians = 0; radians < M_PI * 2.0; radians += increment)
       glVertex2f(center.getX() + (radius * cos(radians)),
                  center.getY() + (radius * sin(radians)));
+    
+    
    
    // complete drawing
+   glColor3f(1.0, 1.0, 1.0);
    glEnd();   
 }
 
