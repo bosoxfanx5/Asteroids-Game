@@ -451,8 +451,9 @@ void drawCircle(const Point & center, int radius)
    const double increment = 1.0 / (double)radius;
 
    // begin drawing
-   glColor3f(0.0 /* red % */, 1.0 /* green % */, 0.0 /* blue % */);
-   glBegin(GL_LINE_LOOP);
+   
+   glBegin(GL_TRIANGLE_FAN);
+   glColor3f(0.0 /* red % */, 0.5 /* green % */, 0.5 /* blue % */);
 
    // go around the circle
    for (double radians = 0; radians < M_PI * 2.0; radians += increment)
