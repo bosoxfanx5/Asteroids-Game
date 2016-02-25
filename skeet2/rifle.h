@@ -41,6 +41,8 @@ class Rifle : Item
    
     int length;
     int  width;
+   
+    int ticks;
 };
 
 #endif /* rifle_h */
