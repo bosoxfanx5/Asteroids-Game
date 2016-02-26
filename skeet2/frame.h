@@ -53,6 +53,7 @@ class Frame
       void draw();
       //void draw(void (*callBack)(const Frame *));
       void draw(void (*callBack)(const Frame *, void *), void *p);
+      void detectCollisions();
    
    private:
       //Member Functions

@@ -86,7 +86,7 @@ void callBack(const Interface *pUI, void * p)
             bulletLocation.getY() < -200 || bulletLocation.getY() > 200)
         {
            //Increment the counter on missed shots...
-           pFrame->banner.incrementR();
+           //pFrame->banner.incrementR();
            
            //delete pigeon
            pFrame->bulletVector.erase(it);
@@ -96,7 +96,7 @@ void callBack(const Interface *pUI, void * p)
         {
            pFrame->bulletVector[vectorOffset++].setLocation(bulletLocation);
         }
-       cerr << "Bullet Number: " << vectorOffset << endl;
+       //cerr << "Bullet Number: " << vectorOffset << endl;
     }
    
    //PIGEONS
@@ -104,9 +104,9 @@ void callBack(const Interface *pUI, void * p)
    if (pFrame->pigeonVector.size() < 1)
    //if (pFrame->pigeonVector.size() == 0)
    {
-      cerr << "Initial Pigeon Count: " << pFrame->pigeonVector.size() << endl;
+      //cerr << "Initial Pigeon Count: " << pFrame->pigeonVector.size() << endl;
       Pigeon::launch(pFrame->pigeonVector);
-      cerr << "First Pigeon Created Count: " << pFrame->pigeonVector.size() << endl;
+      //cerr << "First Pigeon Created Count: " << pFrame->pigeonVector.size() << endl;
    }
    
    for (std::vector<Pigeon>::iterator it = pFrame->pigeonVector.begin();
@@ -143,11 +143,12 @@ void callBack(const Interface *pUI, void * p)
       {
          pFrame->pigeonVector[vectorOffset++].setLocation(pigeonLocation);
       }
-      cerr << "Pigeon Count: " << pFrame->pigeonVector.size() << endl;
+      //cerr << "Pigeon Count: " << pFrame->pigeonVector.size() << endl;
    }
    
 
    pFrame->rifle.draw();
+   pFrame->detectCollisions();
    
 
    
