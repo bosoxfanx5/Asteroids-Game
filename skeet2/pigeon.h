@@ -32,6 +32,7 @@ class Pigeon : Item
    
    Point origin;
    Point destination;
+   int pointValue = 1;
    
    void setLocation(       Point p) { Item::setLocation(p);    }
    void setOrientation(      int o) { Item::setOrientation(o); }

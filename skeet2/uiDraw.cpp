@@ -430,7 +430,8 @@ void drawRect(const Point & center, int width, int height, int rotation)
    rotate(br, center, rotation);
 
    //Finally draw the rectangle
-   glBegin(GL_LINE_STRIP);
+   glBegin(GL_TRIANGLE_FAN);
+   glColor3f(0.5 /* red % */, 0.5 /* green % */, 0.5 /* blue % */);
    glVertex2f(tl.getX(), tl.getY());
    glVertex2f(tr.getX(), tr.getY());
    glVertex2f(br.getX(), br.getY());
@@ -452,8 +453,21 @@ void drawCircle(const Point & center, int radius)
 
    // begin drawing
    
-   glBegin(GL_TRIANGLE_FAN);
-   glColor3f(0.0 /* red % */, 0.5 /* green % */, 0.5 /* blue % */);
+   switch (radius)
+   {
+      case 10:
+         glBegin(GL_TRIANGLE_FAN);
+         glColor3f(0.85 /* red % */, 0.65 /* green % */, 0.13 /* blue % */);
+         break;
+      case 15:
+         glBegin(GL_TRIANGLE_FAN);
+         glColor3f(0.0 /* red % */, 0.5 /* green % */, 0.5 /* blue % */);
+         break;
+      default:
+         glBegin(GL_TRIANGLE_FAN);
+         glColor3f(0.54 /* red % */, 0.17 /* green % */, 0.89 /* blue % */);
+         break;
+   }
 
    // go around the circle
    for (double radians = 0; radians < M_PI * 2.0; radians += increment)
