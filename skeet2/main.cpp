@@ -54,12 +54,12 @@ void callBack(const Interface *pUI, void * p)
    //Rifle 1
    if (pUI->isRight()) pFrame->rifleVector[0].turnRight();
    if (pUI->isLeft())  pFrame->rifleVector[0].turnLeft();
-   if (pUI->isSpace()) pFrame->rifleVector[0].fireRifle(pFrame->bulletVector);
+   if (pUI->isSpace()) pFrame->rifleVector[0].fireRifle();
    
    //Rifle 2
    if (pUI->isF1()) pFrame->rifleVector[1].turnLeft();
    if (pUI->isF3()) pFrame->rifleVector[1].turnRight();
-   if (pUI->isF2()) pFrame->rifleVector[1].fireRifle(pFrame->bulletVector);
+   if (pUI->isF2()) pFrame->rifleVector[1].fireRifle();
    
    
    //RIFLES
@@ -72,48 +72,48 @@ void callBack(const Interface *pUI, void * p)
       
       //Draw the rifle at it's current location
       r->draw();
+      
+      //BULLETS
+      int bulletOffset = 0;
+      for (std::vector<Bullet>::iterator it  = r->bulletVector.begin();
+           it != r->bulletVector.end();
+           ++it)
+      {   //b is a pointer to a bullet in the vector
+         Bullet * b = &r->bulletVector[bulletOffset];
+         
+         //Move the bullet using it's own move method.
+         b->move();
+         
+         //Draw the bullet at it's current location
+         b->draw();
+         
+         //If location has not changed on a bullet we want to know about it
+         assert(                                   b->getLocation()
+                == r->bulletVector[bulletOffset].getLocation());
+         
+         
+         Point bulletLocation = b->getLocation();
+         
+         if (bulletLocation.getX() < -200 || bulletLocation.getX() > 200 ||
+             bulletLocation.getY() < -200 || bulletLocation.getY() > 200)
+         {
+            //Increment the counter on missed shots...
+            //pFrame->banner.incrementR();
+            
+            //delete pigeon
+            r->bulletVector.erase(it);
+            break; //break out of the loop
+         }
+         else
+         {
+            r->bulletVector[bulletOffset++].setLocation(bulletLocation);
+         }
+         //cerr << "Bullet Number: " << vectorOffset << endl;
+         bulletOffset++;
+      }
       vectorOffset++;
    }
 
-   
-   //BULLETS
-   vectorOffset = 0;
-   for (std::vector<Bullet>::iterator it  = pFrame->bulletVector.begin();
-                                      it != pFrame->bulletVector.end();
-                                    ++it)
-    {   //b is a pointer to a bullet in the vector
-        Bullet * b = &pFrame->bulletVector[vectorOffset];
-       
-        //Move the bullet using it's own move method.
-        b->move();
-       
-        //Draw the bullet at it's current location
-        b->draw();
-       
-        //If location has not changed on a bullet we want to know about it
-        assert(                                   b->getLocation()
-               == pFrame->bulletVector[vectorOffset].getLocation());
-       
-       
-        Point bulletLocation = b->getLocation();
-       
-        if (bulletLocation.getX() < -200 || bulletLocation.getX() > 200 ||
-            bulletLocation.getY() < -200 || bulletLocation.getY() > 200)
-        {
-           //Increment the counter on missed shots...
-           //pFrame->banner.incrementR();
-           
-           //delete pigeon
-           pFrame->bulletVector.erase(it);
-           break; //break out of the loop
-        }
-        else
-        {
-           pFrame->bulletVector[vectorOffset++].setLocation(bulletLocation);
-        }
-       //cerr << "Bullet Number: " << vectorOffset << endl;
-    }
-   
    //PIGEONS
    vectorOffset = 0;
    if (pFrame->pigeonVector.size() < 1)

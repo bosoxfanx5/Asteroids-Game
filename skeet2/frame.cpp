@@ -59,37 +59,49 @@ Frame::Frame()
 
 void Frame::detectCollisions()
 {
-   for (std::vector<Bullet>::iterator bit  = bulletVector.begin();
-        bit != bulletVector.end() &&
-               pigeonVector.size() != 0 &&
-               bulletVector.size() != 0;
-                                    ++bit)
+   int vectorOffset = 0;
+   for (std::vector<Rifle>::iterator it  = rifleVector.begin();
+                                     it != rifleVector.end();
+                                   ++it)
+   {   //r is a pointer to a rifle in the vector
+      Rifle * r = &rifleVector[vectorOffset];
       
-   {
-      for (std::vector<Pigeon>::iterator pit  = pigeonVector.begin();
-           pit != pigeonVector.end() &&
-                  pigeonVector.size() != 0 &&
-                  bulletVector.size() != 0;
-                                       ++pit)
+      //Draw the rifle at it's current location
+      //r->draw();
+      vectorOffset++;
+      
+      
+      for (std::vector<Bullet>::iterator bit  = r->bulletVector.begin();
+                                         bit != r->bulletVector.end() &&
+                                             pigeonVector.size() != 0 &&
+                                          r->bulletVector.size() != 0;
+                                       ++bit)
+         
       {
-         int x1 = bit->getLocation().getX();
-         int x2 = pit->getLocation().getX();
-         int y1 = bit->getLocation().getY();
-         int y2 = pit->getLocation().getY();
-         
-         std::cerr << "Distance: " << pow((pow((x2-x1), 2) +
-                      pow((y2-y1), 2)), 0.5) << std::endl;
-         
-         if (pow((pow((x2-x1), 2) +
-                  pow((y2-y1), 2)), 0.5) < 20)
+         for (std::vector<Pigeon>::iterator pit  = pigeonVector.begin();
+                                            pit != pigeonVector.end() &&
+                                                   pigeonVector.size() != 0 &&
+                                                r->bulletVector.size() != 0;
+                                          ++pit)
          {
-            banner.incrementR();
-         
-            pigeonVector.erase(pit);
-            bulletVector.erase(bit);
-            break;
+            int x1 = bit->getLocation().getX();
+            int x2 = pit->getLocation().getX();
+            int y1 = bit->getLocation().getY();
+            int y2 = pit->getLocation().getY();
+            
+            //std::cerr << "Distance: " << pow((pow((x2-x1), 2) +
+            //                                  pow((y2-y1), 2)), 0.5) << std::endl;
+            
+            if (pow((pow((x2-x1), 2) +
+                     pow((y2-y1), 2)), 0.5) < 20)
+            {
+               banner.incrementR();
+               
+                  pigeonVector.erase(pit);
+               r->bulletVector.erase(bit);
+               break;
+            }
          }
       }
-      
    }
 }

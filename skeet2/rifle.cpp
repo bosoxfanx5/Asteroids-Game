@@ -45,7 +45,7 @@ void Rifle :: turnRight()
       Item::setOrientation(rifleAngleMin); //otherwise, reset to max
 }
 
-void Rifle :: fireRifle(std::vector <Bullet> & bulletVector)
+void Rifle :: fireRifle()
 {
     //If we have less than 5 bullets in the vector
     if (bulletVector.size() < 5)
@@ -64,5 +64,7 @@ void Rifle :: fireRifle(std::vector <Bullet> & bulletVector)
        b.setVelocity(v);
        
        bulletVector.push_back(b);
+       
+       std::cerr << "Bullet Vector Size" << bulletVector.size();
     }
 }
