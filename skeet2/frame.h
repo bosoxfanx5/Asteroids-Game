@@ -53,7 +53,7 @@ class Frame
       std::vector<Pigeon> pigeonVector; // < 1
    
       //Bullets
-      //std::vector<Bullet> bulletVector; // < 5
+      std::vector<Bullet> bulletVector; // < 5
    
       //Banner
       Banner banner;

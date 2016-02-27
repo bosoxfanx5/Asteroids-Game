@@ -35,6 +35,9 @@ public:
    void setOrientation(      int o) { Item::setOrientation(o); }
    void setVelocity(    Velocity v) { Item::setVelocity(v);    }
    
+   //BAD ACCESS ERROR
+   //void setAngle(           int a)  { Item:setAngle(a);        }
+   
    void move() { Item::move(); }
 };
 

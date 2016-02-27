@@ -35,14 +35,11 @@ public:
    //Getters and Getters
    int getOrientation()      { return Item::getOrientation(); }
    void setOrientation(int o) { Item::setOrientation(o);       }
-   void turnRight(); 
+   void turnRight();
    void turnLeft();
-   void fireRifle();
+   void fireRifle(std::vector <Bullet> & bulletVector);
    void setMinMax(int min, int max) {rifleAngleMin = min; rifleAngleMax = max;}
    void setLocation(int x, int y) {Item::setLocation(Point(x,y));}
-   
-   //Bullets
-   std::vector<Bullet> bulletVector; // < 5
    
    int length;
    int  width;
