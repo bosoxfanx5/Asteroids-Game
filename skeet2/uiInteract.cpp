@@ -305,7 +305,7 @@ void Interface::initialize(int argc, char ** argv, const char * title, Point top
    glutIgnoreKeyRepeat(true);
    
    // set up the drawing style: B/W and 2D
-   glClearColor(0, 0, 0, 0);          // Black is the background color
+   glClearColor(0.2, 0.6, 0.8, 0);          // Black is the background color
    gluOrtho2D((int)topLeft.getX(), (int)bottomRight.getX(),
               (int)bottomRight.getY(), (int)topLeft.getY()); // 2D environment
    

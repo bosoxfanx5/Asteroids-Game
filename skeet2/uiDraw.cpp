@@ -465,7 +465,7 @@ void drawCircle(const Point & center, int radius)
          break;
       default:
          glBegin(GL_TRIANGLE_FAN);
-         glColor3f(0.54 /* red % */, 0.17 /* green % */, 0.89 /* blue % */);
+         glColor3f(0.0 /* red % */, 0.0 /* green % */, 0.0 /* blue % */);
          break;
    }
 
@@ -489,13 +489,14 @@ void drawCircle(const Point & center, int radius)
 void drawDot(const Point & point)
 {
    // Get ready, get set...
-   glBegin(GL_POINTS);
+   glBegin(GL_TRIANGLE_FAN);
+   glColor3f(1.0, 1.0, 1.0);
 
    // Go...
    glVertex2f(point.getX(),     point.getY()    );
-   glVertex2f(point.getX() + 1, point.getY()    );
-   glVertex2f(point.getX() + 1, point.getY() + 1);
-   glVertex2f(point.getX(),     point.getY() + 1);
+   glVertex2f(point.getX() + 3, point.getY()    );
+   glVertex2f(point.getX() + 3, point.getY() + 3);
+   glVertex2f(point.getX(),     point.getY() + 3);
 
    // Done!  OK, that was a bit too dramatic
    glEnd();
