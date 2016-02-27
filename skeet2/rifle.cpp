@@ -9,10 +9,6 @@
 #include "rifle.h"
 void Rifle :: turnLeft()
 {
-   //ticks = 0;
-   // if (this->getOrientation() < rifleAngleMax)
-   //    Item::setOrientation(Item::getOrientation()+1);
-   
    //set degrees of rotation
    int degrees = 2;
    
@@ -32,9 +28,6 @@ void Rifle :: turnLeft()
 
 void Rifle :: turnRight()
 {
-    //if (this->getOrientation() > rifleAngleMin)
-    //   Item::setOrientation(Item::getOrientation()-1);
-   
    //set degrees of rotation
    int degrees = -2;
    
@@ -62,9 +55,6 @@ void Rifle :: fireRifle(std::vector <Bullet> & bulletVector)
        
        Point l = this->getLocation();
        b.setLocation(l);
-       
-       //set the bullet's orientation to the angle of the rifle
-       //b.setOrientation(this->getOrientation());
        b.setOrientation(0);
        
        Velocity v;

@@ -65,19 +65,13 @@ void Frame::detectCollisions()
                bulletVector.size() != 0;
                                     ++bit)
       
-   //for (int i = 0; i < pigeonVector.size(); i++)
    {
-      //Pigeon pigeon = pigeonVector[i];
-      //for (int j = 0; j < bulletVector.size(); j++)
-      //{
       for (std::vector<Pigeon>::iterator pit  = pigeonVector.begin();
            pit != pigeonVector.end() &&
                   pigeonVector.size() != 0 &&
                   bulletVector.size() != 0;
                                        ++pit)
       {
-         //Bullet bullet = bulletVector[j];
-         
          int x1 = bit->getLocation().getX();
          int x2 = pit->getLocation().getX();
          int y1 = bit->getLocation().getY();
