@@ -18,6 +18,9 @@ void Pigeon::launch(std::vector <Pigeon> & pigeonVector)
    Point p;
    Velocity v;
    
+   //v -4 - +4
+   //h +3 - +6
+   
    int endY;
    do
    {

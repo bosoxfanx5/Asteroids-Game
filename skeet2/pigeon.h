@@ -39,7 +39,7 @@ class Pigeon : Item
    void setVelocity(    Velocity v) { Item::setVelocity(v);    }
    
    void move() { Item::move();    }
-
+   //void launch(std::vector <Pigeon> & pigeonVector);
    static void launch(std::vector <Pigeon> & pigeonVector);
    
 };
