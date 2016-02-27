@@ -45,16 +45,16 @@ void Frame::draw()
    return;
 }
 
-//void Frame::draw(void (*callBack)(const Frame *))
-//{
-//   // setup the callbacks
-//   this->p = p;
-//   this->callBack = callBack;
-//
-//   glutMainLoop();
-//
-//   return;
-//}
+Frame::Frame()
+{
+   Rifle r1;
+   Rifle r2;
+   r2.setMinMax(0, 90);
+   r2.setLocation(-200, -200);
+   
+   rifleVector.push_back(r1);
+   rifleVector.push_back(r2);
+}
 
 void Frame::detectCollisions()
 {

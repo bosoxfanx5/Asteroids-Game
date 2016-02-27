@@ -172,6 +172,15 @@ void Interface::keyEvent(int key, bool fDown)
       case GLUT_KEY_LEFT:
          isLeftPress = fDown;
          break;
+      case GLUT_KEY_F1:
+         isF1Press = fDown;
+         break;
+      case GLUT_KEY_F2: //Fire
+         isF2Press = fDown;
+         break;
+      case GLUT_KEY_F3:
+         isF3Press = fDown;
+         break;
       case GLUT_KEY_HOME:
       case ' ':
          isSpacePress = fDown;
@@ -194,7 +203,14 @@ void Interface::keyEvent()
       isLeftPress++;
    if (isRightPress)
       isRightPress++;
+   if (isF1Press)
+      isF1Press++;
+   if (isF3Press)
+      isF3Press++;
+   
+   //Fire Keys
    isSpacePress = false;
+   isF2Press = false;
 }
 
 
@@ -239,6 +255,9 @@ int          Interface::isDownPress  = 0;
 int          Interface::isUpPress    = 0;
 int          Interface::isLeftPress  = 0;
 int          Interface::isRightPress = 0;
+int          Interface::isF1Press = 0;
+bool         Interface::isF2Press = 0; //Fire
+int          Interface::isF3Press = 0;
 bool         Interface::isSpacePress = false;
 bool         Interface::initialized  = false;
 double       Interface::timePeriod   = 1.0 / 30; // default to 30 frames/second

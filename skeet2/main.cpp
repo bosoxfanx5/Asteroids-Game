@@ -56,13 +56,32 @@ void callBack(const Interface *pUI, void * p)
    pFrame->banner.draw();
    
    // rotate and fire the rifle
-   if (pUI->isRight()) pFrame->rifle.turnRight();
-   if (pUI->isLeft())  pFrame->rifle.turnLeft();
-   if (pUI->isSpace()) pFrame->rifle.fireRifle(pFrame->bulletVector);
-    
+   //Rifle 1
+   if (pUI->isRight()) pFrame->rifleVector[0].turnRight();
+   if (pUI->isLeft())  pFrame->rifleVector[0].turnLeft();
+   if (pUI->isSpace()) pFrame->rifleVector[0].fireRifle(pFrame->bulletVector);
+   
+   //Rifle 2
+   if (pUI->isF1()) pFrame->rifleVector[1].turnRight();
+   if (pUI->isF3()) pFrame->rifleVector[1].turnLeft();
+   if (pUI->isF2()) pFrame->rifleVector[1].fireRifle(pFrame->bulletVector);
+   
+   
+   //RIFLES
+   int vectorOffset = 0;
+   for (std::vector<Rifle>::iterator it  = pFrame->rifleVector.begin();
+                                     it != pFrame->rifleVector.end();
+                                   ++it)
+   {   //r is a pointer to a rifle in the vector
+      Rifle * r = &pFrame->rifleVector[vectorOffset];
+      
+      //Draw the rifle at it's current location
+      r->draw();
+   }
+
    
    //BULLETS
-   int vectorOffset = 0;
+   vectorOffset = 0;
    for (std::vector<Bullet>::iterator it  = pFrame->bulletVector.begin();
                                       it != pFrame->bulletVector.end();
                                     ++it)
@@ -146,8 +165,6 @@ void callBack(const Interface *pUI, void * p)
       //cerr << "Pigeon Count: " << pFrame->pigeonVector.size() << endl;
    }
    
-
-   pFrame->rifle.draw();
    pFrame->detectCollisions();
    
 

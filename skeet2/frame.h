@@ -43,11 +43,19 @@
 class Frame
 {
    public:
+   Frame();
+   
       //Member Data
-      Rifle rifle;
+      //Rifle rifle();
+      std::vector<Rifle> rifleVector; // < 3
+   
       //Pigeon pigeon;
       std::vector<Pigeon> pigeonVector; // < 1
+   
+      //Bullets
       std::vector<Bullet> bulletVector; // < 5
+   
+      //Banner
       Banner banner;
       int frameRate = 30;
       void draw();
