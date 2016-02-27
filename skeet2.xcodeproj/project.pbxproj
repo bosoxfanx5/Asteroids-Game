@@ -36,7 +36,7 @@
 
 /* Begin PBXFileReference section */
 		84ABD5DE1C795578008FBB89 /* skeet2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = skeet2; sourceTree = BUILT_PRODUCTS_DIR; };
-		84ABD5E11C795578008FBB89 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		84ABD5E11C795578008FBB89 /* main.cpp */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; tabWidth = 3; };
 		84ABD5E81C795BF7008FBB89 /* frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = frame.h; sourceTree = "<group>"; };
 		84ABD5E91C795BF7008FBB89 /* banner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = banner.cpp; sourceTree = "<group>"; };
 		84ABD5EA1C795BF7008FBB89 /* banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = banner.h; sourceTree = "<group>"; };
