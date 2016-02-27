@@ -51,6 +51,7 @@ Frame::Frame()
    Rifle r2;
    r2.setMinMax(0, 90);
    r2.setLocation(-200, -200);
+   r2.setOrientation(45);
    
    rifleVector.push_back(r1);
    rifleVector.push_back(r2);

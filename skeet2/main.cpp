@@ -77,6 +77,7 @@ void callBack(const Interface *pUI, void * p)
       
       //Draw the rifle at it's current location
       r->draw();
+      vectorOffset++;
    }
 
    
