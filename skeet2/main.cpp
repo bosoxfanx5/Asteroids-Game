@@ -38,7 +38,6 @@ public:
  * engine will wait until the proper amount of
  * time has passed and put the drawing on the screen.
  **************************************/
-//void callBack(const Interface *pUI, void * vp)
 void callBack(const Interface *pUI, void * p)
 {
 /*
@@ -47,10 +46,6 @@ void callBack(const Interface *pUI, void * p)
  |    |  \ \__/  |  |    \__, /--\ |___ |___ |___ |  \
  
 */
-   //Ball * pBall = (Ball *)p;  // cast the void pointer into a known type
-   //std::vector<Ball> ballVector = *(std::vector<Ball> *)vp;
-   //std::vector<Ball> ballVector = *(std::vector<Ball> *)vp;
-   
    
    Frame * pFrame = (Frame *)p;  // cast the void pointer into a known type
    pFrame->banner.draw();
@@ -105,9 +100,6 @@ void callBack(const Interface *pUI, void * p)
         if (bulletLocation.getX() < -200 || bulletLocation.getX() > 200 ||
             bulletLocation.getY() < -200 || bulletLocation.getY() > 200)
         {
-           //Increment the counter on missed shots...
-           //pFrame->banner.incrementR();
-           
            //delete pigeon
            pFrame->bulletVector.erase(it);
            break; //break out of the loop
@@ -116,17 +108,13 @@ void callBack(const Interface *pUI, void * p)
         {
            pFrame->bulletVector[vectorOffset++].setLocation(bulletLocation);
         }
-       //cerr << "Bullet Number: " << vectorOffset << endl;
     }
    
    //PIGEONS
    vectorOffset = 0;
-   if (pFrame->pigeonVector.size() < 1)
-   //if (pFrame->pigeonVector.size() == 0)
+   if (pFrame->pigeonVector.size() < 1 )
    {
-      //cerr << "Initial Pigeon Count: " << pFrame->pigeonVector.size() << endl;
       Pigeon::launch(pFrame->pigeonVector);
-      //cerr << "First Pigeon Created Count: " << pFrame->pigeonVector.size() << endl;
    }
    
    for (std::vector<Pigeon>::iterator it = pFrame->pigeonVector.begin();
@@ -163,117 +151,9 @@ void callBack(const Interface *pUI, void * p)
       {
          pFrame->pigeonVector[vectorOffset++].setLocation(pigeonLocation);
       }
-      //cerr << "Pigeon Count: " << pFrame->pigeonVector.size() << endl;
    }
    
    pFrame->detectCollisions();
-   
-
-   
-   //Iterate through vector that was passed in...
-//   for (std::vector<Ball>::iterator it  = ballVector.begin();
-//                                    it != ballVector.end();
-//                                  ++it)
-//   {
-//      //Ball * b = &(*it); //This works in place of it.
-//      //Ball * b = &ballVector[vectorOffset];
-//      //Ball * b = &ballVector[vectorOffset];
-//      
-//      
-//      b->pt.addX(offset);
-//      b->pt.addY(offset);
-//      
-//      // move the polygon
-//      //if (pUI->isRight()) pUI->rifle.turnRight();
-//      //if (pUI->isLeft())  pUI->rifle.turnLeft();
-//      
-//      if (pUI->isRight()) b->pt.addX( 1);
-//      if (pUI->isLeft())  b->pt.addX(-1);
-//      if (pUI->isUp())    b->pt.addY( 1);
-//      if (pUI->isDown())  b->pt.addY(-1);
-//   
-//      // rotate constantly
-//      b->rotation++;
-//   
-//      // draw
-//      drawPolygon(b->rotation, //position//
-//                  20,           // radius //
-//                  b->sides,    //segments//
-//                  b->rotation);//rotation//
-//      
-//      ballVector[vectorOffset] = *b;
-//      
-//      offset +=20;
-//      vectorOffset++;
-//   }
-   
-/*
- ___  _ ____ ____ ____ ___
- |  \ | |__/ |___ |     |
- |__/ | |  \ |___ |___  |
-
-*/
-   
-   //Rifle r;
-   //r.draw();
-   
-   //pUI->drawRifle();
-   
-   //Velocity v(10);
-   
-   //Bullet b;
-   //b.setVelocity(v);
-   //b.draw();
-   
-//   for (int i = 0; i < 10; i++)
-//   {
-//      Point bulletLocation = b.getLocation();
-//      bulletLocation.addX(-10);
-//      bulletLocation.addY(10);
-//      b.setLocation(bulletLocation);
-//      b.draw();
-//   }
-   
-   //Pigeon p;
-   //p.draw();
-   
-   //Banner banner;
-   //banner.draw();
-   
-   
-   //drawRect(r.getLocation(), r.width, r.length, r.getOrientation());
-   //drawPolygon(r.pt, 5, 4, r.rotation+=10);
-   
-/*
-   ____ ____ _ ____ _ _  _ ____ _
-   |  | |__/ | | __ | |\ | |__| |
-   |__| |  \ | |__] | | \| |  | |___
-
-*/
-//   // move the polygon
-//   if (pUI->isRight())
-//      pBall->pt.addX(1);
-//   if (pUI->isLeft())
-//      pBall->pt.addX(-1);
-//   if (pUI->isUp())
-//      pBall->pt.addY(1);
-//   if (pUI->isDown())
-//      pBall->pt.addY(-1);
-//   
-//   // use the space bar to change the number of sides.
-//   if (pUI->isSpace())
-//      pBall->sides++;
-//   if (pBall->sides == 12)
-//      pBall->sides = 3;
-//   
-//   // rotate constantly
-//   pBall->rotation++;
-//   
-//   // draw
-//   drawPolygon(pBall->pt, /*position*/
-//               20, /* radius */
-//               pBall->sides /*segments*/,
-//               pBall->rotation /*rotation*/);
 }
 
 /*********************************
@@ -284,19 +164,13 @@ void callBack(const Interface *pUI, void * p)
 int main(int argc, char ** argv)
 {
    Interface ui(argc, argv, "Test", Point(-200, 200), Point(200, -200));    // initialize OpenGL
-   //Interface ui(argc, argv, "Test");    // initialize OpenGL
    
    Frame mainFrame;
    Ball ball2;                           // initialize the game state
-   //Rifle rifle;
    
    int size = 2;
    std::vector<Ball> ballVector(size);
-   //std::vector<Item> itemVector(size);
    
-   //itemVector.push_back(rifle);
-   
-   //ui.run(callBack, &ball);             // set everything into action
    ui.run(callBack, &mainFrame);         // set everything into action
    
    return 0;

@@ -20,7 +20,7 @@ public:
    Velocity()           { hypotenuse = 0; }
    Velocity(int h)      { hypotenuse = h; }
    
-   void setSpeed(int s) { hypotenuse = s; }  //protected?
+   void setSpeed(int s) { hypotenuse = s; }
    Point getSlope()     { return slope; }
    void setSlope(Point p)     { slope = p; }
    

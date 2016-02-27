@@ -14,8 +14,6 @@
 #include "uiDraw.h"
 #include <vector>
 #include "bullet.h"
-//#define rifleAngleMax 180
-//#define rifleAngleMin 90
 class Rifle : Item
 {
 public:
@@ -32,7 +30,7 @@ public:
                           Item::getOrientation()); }
    
    //We're calling these from their parent class
-   //Getters and Getters
+   //Getters and Setters
    int getOrientation()      { return Item::getOrientation(); }
    void setOrientation(int o) { Item::setOrientation(o);       }
    void turnRight();

@@ -29,7 +29,7 @@
 #ifdef _WIN32
 #include <stdio.h>
 #include <stdlib.h>
-#include <GL/glut.h>         // OpenGL library we copied 
+#include <GL/glut.h>         // OpenGL library we copied
 #define _USE_MATH_DEFINES
 #include <math.h>
 #endif // _WIN32
@@ -52,16 +52,16 @@ using namespace std;
  ********************************************/
 const char NUMBER_OUTLINES[10][20] =
 {
-  {0, 0,  7, 0,   7, 0,  7,10,   7,10,  0,10,   0,10,  0, 0,  -1,-1, -1,-1},//0
-  {7, 0,  7,10,  -1,-1, -1,-1,  -1,-1, -1,-1,  -1,-1, -1,-1,  -1,-1, -1,-1},//1
-  {0, 0,  7, 0,   7, 0,  7, 5,   7, 5,  0, 5,   0, 5,  0,10,   0,10,  7,10},//2
-  {0, 0,  7, 0,   7, 0,  7,10,   7,10,  0,10,   4, 5,  7, 5,  -1,-1, -1,-1},//3
-  {0, 0,  0, 5,   0, 5,  7, 5,   7, 0,  7,10,  -1,-1, -1,-1,  -1,-1, -1,-1},//4
-  {7, 0,  0, 0,   0, 0,  0, 5,   0, 5,  7, 5,   7, 5,  7,10,   7,10,  0,10},//5
-  {7, 0,  0, 0,   0, 0,  0,10,   0,10,  7,10,   7,10,  7, 5,   7, 5,  0, 5},//6
-  {0, 0,  7, 0,   7, 0,  7,10,  -1,-1, -1,-1,  -1,-1, -1,-1,  -1,-1, -1,-1},//7
-  {0, 0,  7, 0,   0, 5,  7, 5,   0,10,  7,10,   0, 0,  0,10,   7, 0,  7,10},//8
-  {0, 0,  7, 0,   7, 0,  7,10,   0, 0,  0, 5,   0, 5,  7, 5,  -1,-1, -1,-1} //9
+   {0, 0,  7, 0,   7, 0,  7,10,   7,10,  0,10,   0,10,  0, 0,  -1,-1, -1,-1},//0
+   {7, 0,  7,10,  -1,-1, -1,-1,  -1,-1, -1,-1,  -1,-1, -1,-1,  -1,-1, -1,-1},//1
+   {0, 0,  7, 0,   7, 0,  7, 5,   7, 5,  0, 5,   0, 5,  0,10,   0,10,  7,10},//2
+   {0, 0,  7, 0,   7, 0,  7,10,   7,10,  0,10,   4, 5,  7, 5,  -1,-1, -1,-1},//3
+   {0, 0,  0, 5,   0, 5,  7, 5,   7, 0,  7,10,  -1,-1, -1,-1,  -1,-1, -1,-1},//4
+   {7, 0,  0, 0,   0, 0,  0, 5,   0, 5,  7, 5,   7, 5,  7,10,   7,10,  0,10},//5
+   {7, 0,  0, 0,   0, 0,  0,10,   0,10,  7,10,   7,10,  7, 5,   7, 5,  0, 5},//6
+   {0, 0,  7, 0,   7, 0,  7,10,  -1,-1, -1,-1,  -1,-1, -1,-1,  -1,-1, -1,-1},//7
+   {0, 0,  7, 0,   0, 5,  7, 5,   0,10,  7,10,   0, 0,  0,10,   7, 0,  7,10},//8
+   {0, 0,  7, 0,   7, 0,  7,10,   0, 0,  0, 5,   0, 5,  7, 5,  -1,-1, -1,-1} //9
 };
 
 /************************************************************************
@@ -77,11 +77,11 @@ void drawDigit(const Point & topLeft, char digit)
    assert(isdigit(digit));
    if (!isdigit(digit))
       return;
-
+   
    // compute the row as specified by the digit
    int r = digit - '0';
    assert(r >= 0 && r <= 9);
-
+   
    // go through each segment.
    for (int c = 0; c < 20 && NUMBER_OUTLINES[r][c] != -1; c += 4)
    {
@@ -89,7 +89,7 @@ void drawDigit(const Point & topLeft, char digit)
              NUMBER_OUTLINES[r][c + 1] != -1 &&
              NUMBER_OUTLINES[r][c + 2] != -1 &&
              NUMBER_OUTLINES[r][c + 3] != -1);
-
+      
       //Draw a line based off of the num structure for each number
       Point start;
       start.setX(topLeft.getX() + NUMBER_OUTLINES[r][c]);
@@ -97,7 +97,7 @@ void drawDigit(const Point & topLeft, char digit)
       Point end;
       end.setX(topLeft.getX() + NUMBER_OUTLINES[r][c + 2]);
       end.setY(topLeft.getY() - NUMBER_OUTLINES[r][c + 3]);
-         
+      
       drawLine(start, end);
    }
 }
@@ -121,7 +121,7 @@ void drawNumber(const Point & topLeft, int number)
    ostringstream sout;
    sout << number;
    string text = sout.str();
-
+   
    // handle the negative
    if (isNegative)
    {
@@ -151,10 +151,10 @@ void drawNumber(const Point & topLeft, int number)
 void drawText(const Point & topLeft, const char * text)
 {
    void *pFont = GLUT_BITMAP_HELVETICA_12;  // also try _18
-
+   
    // prepare to draw the text from the top-left corner
    glRasterPos2f(topLeft.getX(), topLeft.getY());
-
+   
    // loop through the text
    for (const char *p = text; *p; p++)
       glutBitmapCharacter(pFont, *p);
@@ -174,7 +174,7 @@ void drawPolygon(const Point & center, int radius, int points, int rotation)
 {
    // begin drawing
    glBegin(GL_LINE_LOOP);
-
+   
    //loop around a circle the given number of times drawing a line from
    //one point to the next
    for (double i = 0; i < 2 * M_PI; i += (2 * M_PI) / points)
@@ -185,10 +185,10 @@ void drawPolygon(const Point & center, int radius, int points, int rotation)
       rotate(temp, center, rotation);
       glVertex2f(temp.getX(), temp.getY());
    }
-
+   
    // complete drawing
    glEnd();
-
+   
 }
 
 
@@ -206,12 +206,12 @@ void rotate(Point & point, const Point & origin, int rotation)
    // because sine and cosine are expensive, we want to call them only once
    double cosA = cos(deg2rad(rotation));
    double sinA = sin(deg2rad(rotation));
-
+   
    // remember our original point
    Point tmp(false /*check*/);
    tmp.setX(point.getX() - origin.getX());
    tmp.setY(point.getY() - origin.getY());
-
+   
    // find the new values
    point.setX(static_cast<int> (tmp.getX() * cosA -
                                 tmp.getY() * sinA) +
@@ -233,11 +233,11 @@ void drawLine(const Point & begin, const Point & end,
    // Get ready...
    glBegin(GL_LINES);
    glColor3f(red, green, blue);
-
+   
    // Draw the actual line
    glVertex2f(begin.getX(), begin.getY());
    glVertex2f(  end.getX(),   end.getY());
-
+   
    // Complete drawing
    glColor3f(1.0 /* red % */, 1.0 /* green % */, 1.0 /* blue % */);
    glEnd();
@@ -254,7 +254,7 @@ void drawLander(const Point & point)
    {
       int x;
       int y;
-   } points[] = 
+   } points[] =
    {
       {-6, 0}, {-10,0}, {-8, 0}, {-8, 3},  // left foot
       {-5, 4}, {-5, 7}, {-8, 3}, {-5, 4},  // left leg
@@ -265,13 +265,13 @@ void drawLander(const Point & point)
       { 5, 4}, { 8, 3}, { 5, 7}, { 5, 4},  // right leg
       { 8, 3}, { 8, 0}, {10, 0}, { 6, 0}   // right foot
    };
-
+   
    // draw it
    glBegin(GL_LINE_STRIP);
    for (int i = 0; i < sizeof(points) / sizeof(points[0]); i++)
-        glVertex2f(point.getX() + points[i].x,
-                   point.getY() + points[i].y);
-
+      glVertex2f(point.getX() + points[i].x,
+                 point.getY() + points[i].y);
+   
    // complete drawing
    glEnd();
    
@@ -283,7 +283,7 @@ void drawLander(const Point & point)
  * DRAW Lander Flame
  * Draw the flames coming out of a moonlander for thrust
  ***********************************************************************/
-void drawLanderFlames(const Point & point, 
+void drawLanderFlames(const Point & point,
                       bool bottom,
                       bool left,
                       bool right)
@@ -294,7 +294,7 @@ void drawLanderFlames(const Point & point,
       int x;
       int y;
    };
-
+   
    int iFlame = random(0, 3);  // so the flame flickers
    
    // draw it
@@ -314,10 +314,10 @@ void drawLanderFlames(const Point & point,
       glVertex2f(point.getX() - 2, point.getY() + 2);
       for (int i = 0; i < 3; i++)
          glVertex2f(point.getX() + points[iFlame][i].x,
-                   point.getY() + points[iFlame][i].y);
+                    point.getY() + points[iFlame][i].y);
       glVertex2f(point.getX() + 2, point.getY() + 2);
    }
-
+   
    // right thrust
    if (right)
    {
@@ -334,7 +334,7 @@ void drawLanderFlames(const Point & point,
                     point.getY() + points[iFlame][i].y);
       glVertex2f(point.getX() + 6, point.getY() + 10);
    }
-
+   
    // left thrust
    if (left)
    {
@@ -351,7 +351,7 @@ void drawLanderFlames(const Point & point,
                     point.getY() + points[iFlame][i].y);
       glVertex2f(point.getX() - 6, point.getY() + 10);
    }
-
+   
    glColor3f(1.0 /* red % */, 1.0 /* green % */, 1.0 /* blue % */);
    glEnd();
 }
@@ -359,7 +359,7 @@ void drawLanderFlames(const Point & point,
 
 /******************************************************************
  * RANDOM
- * This function generates a random number.  
+ * This function generates a random number.
  *
  *    INPUT:   min, max : The number of values (min <= num <= max)
  *    OUTPUT   <return> : Return the integer
@@ -369,13 +369,13 @@ int random(int min, int max)
    assert(min <= max);
    int num = (rand() % (max - min)) + min;
    assert(min <= num && num <= max);
-
+   
    return num;
 }
 
 /******************************************************************
  * RANDOM
- * This function generates a random number.  
+ * This function generates a random number.
  *
  *    INPUT:   min, max : The number of values (min <= num <= max)
  *    OUTPUT   <return> : Return the double
@@ -386,7 +386,7 @@ double random(double min, double max)
    double num = min + ((double)rand() / (double)RAND_MAX * (max - min));
    
    assert(min <= num && num <= max);
-
+   
    return num;
 }
 
@@ -403,32 +403,32 @@ double random(double min, double max)
 void drawRect(const Point & center, int width, int height, int rotation)
 {
    Point tl(false /*check*/); // top left
-   Point tr(false /*check*/); // top right 
+   Point tr(false /*check*/); // top right
    Point bl(false /*check*/); // bottom left
    Point br(false /*check*/); // bottom right
-
+   
    //Top Left point
    tl.setX(center.getX() - (width  / 2));
    tl.setY(center.getY() + (height / 2));
-
+   
    //Top right point
    tr.setX(center.getX() + (width  / 2));
    tr.setY(center.getY() + (height / 2));
-
+   
    //Bottom left point
    bl.setX(center.getX() - (width  / 2));
    bl.setY(center.getY() - (height / 2));
-
+   
    //Bottom right point
    br.setX(center.getX() + (width  / 2));
    br.setY(center.getY() - (height / 2));
-
+   
    //Rotate all points the given degrees
    rotate(tl, center, rotation);
    rotate(tr, center, rotation);
    rotate(bl, center, rotation);
    rotate(br, center, rotation);
-
+   
    //Finally draw the rectangle
    glBegin(GL_TRIANGLE_FAN);
    glColor3f(0.5 /* red % */, 0.5 /* green % */, 0.5 /* blue % */);
@@ -450,35 +450,22 @@ void drawCircle(const Point & center, int radius)
 {
    assert(radius > 1.0);
    const double increment = 1.0 / (double)radius;
-
-   // begin drawing
    
-   switch (radius)
-   {
-      case 10:
-         glBegin(GL_TRIANGLE_FAN);
-         glColor3f(0.85 /* red % */, 0.65 /* green % */, 0.13 /* blue % */);
-         break;
-      case 15:
-         glBegin(GL_TRIANGLE_FAN);
-         glColor3f(0.0 /* red % */, 0.5 /* green % */, 0.5 /* blue % */);
-         break;
-      default:
-         glBegin(GL_TRIANGLE_FAN);
-         glColor3f(0.54 /* red % */, 0.17 /* green % */, 0.89 /* blue % */);
-         break;
-   }
+   // begin drawing
+   glBegin(GL_TRIANGLE_FAN);
+   glColor3f(0.0 /* red % */, 0.0 /* green % */, 0.0 /* blue % */);
 
+   
    // go around the circle
    for (double radians = 0; radians < M_PI * 2.0; radians += increment)
       glVertex2f(center.getX() + (radius * cos(radians)),
                  center.getY() + (radius * sin(radians)));
-    
-    
+   
+   
    
    // complete drawing
    glColor3f(1.0, 1.0, 1.0);
-   glEnd();   
+   glEnd();
 }
 
 /************************************************************************
@@ -489,14 +476,15 @@ void drawCircle(const Point & center, int radius)
 void drawDot(const Point & point)
 {
    // Get ready, get set...
-   glBegin(GL_POINTS);
-
+   glBegin(GL_TRIANGLE_FAN);
+   glColor3f(1.0, 1.0, 1.0);
+   
    // Go...
    glVertex2f(point.getX(),     point.getY()    );
-   glVertex2f(point.getX() + 1, point.getY()    );
-   glVertex2f(point.getX() + 1, point.getY() + 1);
-   glVertex2f(point.getX(),     point.getY() + 1);
-
+   glVertex2f(point.getX() + 3, point.getY()    );
+   glVertex2f(point.getX() + 3, point.getY() + 3);
+   glVertex2f(point.getX(),     point.getY() + 3);
+   
    // Done!  OK, that was a bit too dramatic
    glEnd();
 }
@@ -506,7 +494,7 @@ void drawDot(const Point & point)
  * Draw a tough bird on the screen
  *  INPUT point   The position of the sacred
  *        radius  The size of the bird
- *        hits    How many its remaining to kill the bird 
+ *        hits    How many its remaining to kill the bird
  *************************************************************************/
 void drawToughBird(const Point & center, float radius, int hits)
 {
@@ -514,14 +502,14 @@ void drawToughBird(const Point & center, float radius, int hits)
    const double increment = M_PI / 6.0;
    
    // begin drawing
-   glBegin(GL_TRIANGLES);   
-
+   glBegin(GL_TRIANGLES);
+   
    // three points: center, pt1, pt2
    Point pt1(false /*check*/);
    pt1.setX(center.getX() + (radius * cos(0.0)));
-   pt1.setY(center.getY() + (radius * sin(0.0)));   
+   pt1.setY(center.getY() + (radius * sin(0.0)));
    Point pt2(pt1);
-
+   
    // go around the circle
    for (double radians = increment;
         radians <= M_PI * 2.0 + .5;
@@ -529,17 +517,17 @@ void drawToughBird(const Point & center, float radius, int hits)
    {
       pt2.setX(center.getX() + (radius * cos(radians)));
       pt2.setY(center.getY() + (radius * sin(radians)));
-
+      
       glVertex2f(center.getX(), center.getY());
       glVertex2f(pt1.getX(),    pt1.getY()   );
       glVertex2f(pt2.getX(),    pt2.getY()   );
       
       pt1 = pt2;
    }
-      
+   
    // complete drawing
-   glEnd();   
-
+   glEnd();
+   
    // draw the score in the center
    if (hits > 0 && hits < 10)
    {
@@ -559,14 +547,14 @@ void drawToughBird(const Point & center, float radius, int hits)
 void drawSacredBird(const Point & center, float radius)
 {
    // handle auto-rotation
-   static float rotation = 0.0;   
+   static float rotation = 0.0;
    rotation += 5.0;
-
+   
    
    // begin drawing
    glBegin(GL_LINE_LOOP);
    glColor3f(1.0 /* red % */, 0.0 /* green % */, 0.0 /* blue % */);
-
+   
    
    //loop around a circle the given number of times drawing a line from
    //one point to the next
@@ -582,7 +570,7 @@ void drawSacredBird(const Point & center, float radius)
    
    // complete drawing
    glColor3f(1.0, 1.0, 1.0); // reset to white
-   glEnd();   
+   glEnd();
 }
 
 /**********************************************************************
@@ -595,17 +583,17 @@ void drawSmallAsteroid( const Point & center, int rotation)
    {
       int x;
       int y;
-   } points[] = 
+   } points[] =
    {
-      {-5, 9},  {4, 8},   {8, 4},   
-      {8, -5},  {-2, -8}, {-2, -3}, 
+      {-5, 9},  {4, 8},   {8, 4},
+      {8, -5},  {-2, -8}, {-2, -3},
       {-8, -4}, {-8, 4},  {-5, 10}
    };
    
    glBegin(GL_LINE_STRIP);
    for (int i = 0; i < sizeof(points)/sizeof(PT); i++)
    {
-      Point pt(center.getX() + points[i].x, 
+      Point pt(center.getX() + points[i].x,
                center.getY() + points[i].y);
       rotate(pt, center, rotation);
       glVertex2f(pt.getX(), pt.getY());
@@ -623,9 +611,9 @@ void drawMediumAsteroid( const Point & center, int rotation)
    {
       int x;
       int y;
-   } points[] = 
+   } points[] =
    {
-      {2, 8},    {8, 15},    {12, 8}, 
+      {2, 8},    {8, 15},    {12, 8},
       {6, 2},    {12, -6},   {2, -15},
       {-6, -15}, {-14, -10}, {-15, 0},
       {-4, 15},  {2, 8}
@@ -634,7 +622,7 @@ void drawMediumAsteroid( const Point & center, int rotation)
    glBegin(GL_LINE_STRIP);
    for (int i = 0; i < sizeof(points)/sizeof(PT); i++)
    {
-      Point pt(center.getX() + points[i].x, 
+      Point pt(center.getX() + points[i].x,
                center.getY() + points[i].y);
       rotate(pt, center, rotation);
       glVertex2f(pt.getX(), pt.getY());
@@ -652,7 +640,7 @@ void drawLargeAsteroid( const Point & center, int rotation)
    {
       int x;
       int y;
-   } points[] = 
+   } points[] =
    {
       {0, 12},    {8, 20}, {16, 14},
       {10, 12},   {20, 0}, {0, -20},
@@ -663,7 +651,7 @@ void drawLargeAsteroid( const Point & center, int rotation)
    glBegin(GL_LINE_STRIP);
    for (int i = 0; i < sizeof(points)/sizeof(PT); i++)
    {
-      Point pt(center.getX() + points[i].x, 
+      Point pt(center.getX() + points[i].x,
                center.getY() + points[i].y);
       rotate(pt, center, rotation);
       glVertex2f(pt.getX(), pt.getY());
@@ -672,11 +660,11 @@ void drawLargeAsteroid( const Point & center, int rotation)
 }
 
 
-/************************************************************************       
- * DRAW Ship                                                                    
- * Draw a spaceship on the screen                                               
- *  INPUT point   The position of the ship                                      
- *        angle   Which direction it is ponted                                  
+/************************************************************************
+ * DRAW Ship
+ * Draw a spaceship on the screen
+ *  INPUT point   The position of the ship
+ *        angle   Which direction it is ponted
  *************************************************************************/
 void drawShip(const Point & center, int rotation, bool thrust)
 {
@@ -687,22 +675,22 @@ void drawShip(const Point & center, int rotation, bool thrust)
       int y;
    };
    
-   // draw the ship                                                 
-   const PT pointsShip[] = 
+   // draw the ship
+   const PT pointsShip[] =
    { // top   r.wing   r.engine l.engine  l.wing    top
-      {0, 6}, {6, -6}, {2, -3}, {-2, -3}, {-6, -6}, {0, 6}  
+      {0, 6}, {6, -6}, {2, -3}, {-2, -3}, {-6, -6}, {0, 6}
    };
    
    glBegin(GL_LINE_STRIP);
    for (int i = 0; i < sizeof(pointsShip)/sizeof(PT); i++)
    {
-      Point pt(center.getX() + pointsShip[i].x, 
+      Point pt(center.getX() + pointsShip[i].x,
                center.getY() + pointsShip[i].y);
       rotate(pt, center, rotation);
       glVertex2f(pt.getX(), pt.getY());
    }
    glEnd();
-
+   
    // draw the flame if necessary
    if (thrust)
    {
@@ -718,7 +706,7 @@ void drawShip(const Point & center, int rotation, bool thrust)
       int iFlame = random(0, 3);
       for (int i = 0; i < 5; i++)
       {
-         Point pt(center.getX() + pointsFlame[iFlame][i].x, 
+         Point pt(center.getX() + pointsFlame[iFlame][i].x,
                   center.getY() + pointsFlame[iFlame][i].y);
          rotate(pt, center, rotation);
          glVertex2f(pt.getX(), pt.getY());

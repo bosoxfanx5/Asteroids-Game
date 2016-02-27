@@ -46,7 +46,6 @@ class Frame
    Frame();
    
       //Member Data
-      //Rifle rifle();
       std::vector<Rifle> rifleVector; // < 3
    
       //Pigeon pigeon;
@@ -59,17 +58,13 @@ class Frame
       Banner banner;
       int frameRate = 30;
       void draw();
-      //void draw(void (*callBack)(const Frame *));
       void draw(void (*callBack)(const Frame *, void *), void *p);
       void detectCollisions();
    
    private:
       //Member Functions
-      
-   
       static void *p;                   // for client
       static void (*callBack)(const Frame *, void *);
-      //static void (*callBack)(const Frame *);
 };
 
 #endif /* frame_h */

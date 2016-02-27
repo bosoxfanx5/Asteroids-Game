@@ -65,13 +65,7 @@ std::istream & operator >> (std::istream & in, Point & pt)
    return in;
 }
 
-/////////////OUR CODE//////////////
 bool Point::operator == (Point rhs)
 {
    return ((this->getX() == rhs.getX()) && (this->getY() == rhs.getY()));
 }
-
-
-
-
-/////////////END CODE//////////////
