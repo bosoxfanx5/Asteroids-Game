@@ -57,8 +57,8 @@ void callBack(const Interface *pUI, void * p)
    if (pUI->isSpace()) pFrame->rifleVector[0].fireRifle(pFrame->bulletVector);
    
    //Rifle 2
-   if (pUI->isF1()) pFrame->rifleVector[1].turnRight();
-   if (pUI->isF3()) pFrame->rifleVector[1].turnLeft();
+   if (pUI->isF1()) pFrame->rifleVector[1].turnLeft();
+   if (pUI->isF3()) pFrame->rifleVector[1].turnRight();
    if (pUI->isF2()) pFrame->rifleVector[1].fireRifle(pFrame->bulletVector);
    
    
