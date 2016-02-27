@@ -34,13 +34,11 @@ class Item
    void move(Point & newLocation);
    void turn(int newOrientation);
    
-   private:
+   public:
    //Member Data
    Point location;   // location of the polygon on the screen
    int orientation;  // the angle or orientation of the polygon
-   
-   protected:
-    Velocity velocity;
+   Velocity velocity;
     
 };
 
