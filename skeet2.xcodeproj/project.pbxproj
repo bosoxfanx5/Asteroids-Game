@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		844806D81CAE182E004CADED /* ship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 844806D71CAE182E004CADED /* ship.cpp */; };
+		844806DB1CAE18B3004CADED /* asteroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 844806DA1CAE18B3004CADED /* asteroid.cpp */; };
 		84ABD5E21C795578008FBB89 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD5E11C795578008FBB89 /* main.cpp */; };
 		84ABD5FC1C795BF7008FBB89 /* banner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD5E91C795BF7008FBB89 /* banner.cpp */; };
 		84ABD5FD1C795BF7008FBB89 /* bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD5EB1C795BF7008FBB89 /* bullet.cpp */; };
@@ -38,6 +39,8 @@
 /* Begin PBXFileReference section */
 		844806D61CAE1820004CADED /* ship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ship.h; sourceTree = "<group>"; };
 		844806D71CAE182E004CADED /* ship.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ship.cpp; sourceTree = "<group>"; };
+		844806D91CAE189E004CADED /* asteroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asteroid.h; sourceTree = "<group>"; };
+		844806DA1CAE18B3004CADED /* asteroid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = asteroid.cpp; sourceTree = "<group>"; };
 		84ABD5DE1C795578008FBB89 /* skeet2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = skeet2; sourceTree = BUILT_PRODUCTS_DIR; };
 		84ABD5E11C795578008FBB89 /* main.cpp */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; tabWidth = 3; };
 		84ABD5E81C795BF7008FBB89 /* frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = frame.h; sourceTree = "<group>"; };
@@ -110,9 +113,11 @@
 				84ABD5EE1C795BF7008FBB89 /* item.cpp */,
 				84ABD5F11C795BF7008FBB89 /* pigeon.h */,
 				84ABD5F01C795BF7008FBB89 /* pigeon.cpp */,
+				844806D91CAE189E004CADED /* asteroid.h */,
+				844806DA1CAE18B3004CADED /* asteroid.cpp */,
 				84ABD5F51C795BF7008FBB89 /* rifle.h */,
-				844806D61CAE1820004CADED /* ship.h */,
 				84ABD5F41C795BF7008FBB89 /* rifle.cpp */,
+				844806D61CAE1820004CADED /* ship.h */,
 				844806D71CAE182E004CADED /* ship.cpp */,
 				84ABD5FB1C795BF7008FBB89 /* velocity.h */,
 				84ABD5FA1C795BF7008FBB89 /* velocity.cpp */,
@@ -187,6 +192,7 @@
 				84ABD5FE1C795BF7008FBB89 /* frame.cpp in Sources */,
 				84ABD6031C795BF7008FBB89 /* uiDraw.cpp in Sources */,
 				84ABD6051C795BF7008FBB89 /* velocity.cpp in Sources */,
+				844806DB1CAE18B3004CADED /* asteroid.cpp in Sources */,
 				84ABD6011C795BF7008FBB89 /* point.cpp in Sources */,
 				844806D81CAE182E004CADED /* ship.cpp in Sources */,
 				84ABD5FD1C795BF7008FBB89 /* bullet.cpp in Sources */,
