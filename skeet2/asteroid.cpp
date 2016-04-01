@@ -1,4 +1,4 @@
-//
+/*//
 //  pigeon.cpp
 //  skeet
 //
@@ -56,3 +56,4 @@ void Pigeon::launch(std::vector <Pigeon> & pigeonVector)
    //push pigeon onto stack
    pigeonVector.push_back(myPigeon);
 }
+*/

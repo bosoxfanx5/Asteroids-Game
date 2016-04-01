@@ -47,14 +47,14 @@ void Frame::draw()
 
 Frame::Frame()
 {
-   Rifle r1;
-   Rifle r2;
+   Ship r1;
+   Ship r2;
    r2.setMinMax(0, 90);
    r2.setLocation(-200, -200);
    r2.setOrientation(45);
    
-   rifleVector.push_back(r1);
-   rifleVector.push_back(r2);
+   shipVector.push_back(r1);
+   shipVector.push_back(r2);
 }
 
 void Frame::detectCollisions()

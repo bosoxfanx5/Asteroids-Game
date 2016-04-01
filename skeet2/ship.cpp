@@ -1,13 +1,13 @@
 //
-//  rifle.cpp
-//  skeet
+//  ship.cpp
+//  asteroids
 //
 //  Created by Administrator on 2/6/16.
 //  Copyright © 2016 BYU. All rights reserved.
 //
 
-#include "rifle.h"
-void Rifle :: turnLeft()
+#include "ship.h"
+void Ship :: turnLeft()
 {
    //set degrees of rotation
    int degrees = 2;
@@ -20,13 +20,13 @@ void Rifle :: turnLeft()
    if(ticks < -5) degrees = 3; //set the degrees of rotation to -3
    
    //if the rifle orientation is less than the max
-   if (this->getOrientation() < rifleAngleMax)
+   if (this->getOrientation() < shipAngleMax)
       Item::setOrientation(Item::getOrientation() + degrees); //add degrees (-)
    else
-      Item::setOrientation(rifleAngleMax); //otherwise, reset to max
+      Item::setOrientation(shipAngleMax); //otherwise, reset to max
 }
 
-void Rifle :: turnRight()
+void Ship :: turnRight()
 {
    //set degrees of rotation
    int degrees = -2;
@@ -39,13 +39,13 @@ void Rifle :: turnRight()
    if(ticks < -5) degrees = -3; //set the degrees of rotation to -3
    
    //if the rifle orientation is less than the max
-   if (this->getOrientation() > rifleAngleMin)
+   if (this->getOrientation() > shipAngleMin)
       Item::setOrientation(Item::getOrientation() + degrees); //add degrees (-)
    else
-      Item::setOrientation(rifleAngleMin); //otherwise, reset to max
+      Item::setOrientation(shipAngleMin); //otherwise, reset to max
 }
 
-void Rifle :: fireRifle(std::vector <Bullet> & bulletVector)
+void Ship :: fireShip(std::vector <Bullet> & bulletVector)
 {
     //If we have less than 5 bullets in the vector
     if (bulletVector.size() < 5)

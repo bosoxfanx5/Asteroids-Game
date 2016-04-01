@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <vector>
-#include "rifle.h"
+#include "ship.h"
 #include "pigeon.h"
 #include "bullet.h"
 #include "banner.h"
@@ -46,7 +46,7 @@ class Frame
    Frame();
    
       //Member Data
-      std::vector<Rifle> rifleVector; // < 3
+      std::vector<Ship> shipVector; // < 3
    
       //Pigeon pigeon;
       std::vector<Pigeon> pigeonVector; // < 1

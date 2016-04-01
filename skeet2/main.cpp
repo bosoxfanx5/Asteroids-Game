@@ -8,7 +8,7 @@
 #include "point.h"
 #include "uiInteract.h"
 #include "uiDraw.h"
-#include "rifle.h"
+#include "ship.h"
 #include "bullet.h"
 #include "pigeon.h"
 #include "banner.h"
@@ -50,27 +50,27 @@ void callBack(const Interface *pUI, void * p)
    Frame * pFrame = (Frame *)p;  // cast the void pointer into a known type
    pFrame->banner.draw();
    
-   // rotate and fire the rifle
-   //Rifle 1
-   if (pUI->isRight()) pFrame->rifleVector[0].turnRight();
-   if (pUI->isLeft())  pFrame->rifleVector[0].turnLeft();
-   if (pUI->isSpace()) pFrame->rifleVector[0].fireRifle(pFrame->bulletVector);
+   // rotate and fire the ship
+   //Ship 1
+   if (pUI->isRight()) pFrame->shipVector[0].turnRight();
+   if (pUI->isLeft())  pFrame->shipVector[0].turnLeft();
+   if (pUI->isSpace()) pFrame->shipVector[0].fireShip(pFrame->bulletVector);
    
-   //Rifle 2
-   if (pUI->isF1()) pFrame->rifleVector[1].turnRight();
-   if (pUI->isF3()) pFrame->rifleVector[1].turnLeft();
-   if (pUI->isF2()) pFrame->rifleVector[1].fireRifle(pFrame->bulletVector);
+   //Ship 2
+   if (pUI->isF1()) pFrame->shipVector[1].turnRight();
+   if (pUI->isF3()) pFrame->shipVector[1].turnLeft();
+   if (pUI->isF2()) pFrame->shipVector[1].fireShip(pFrame->bulletVector);
    
    
    //RIFLES
    int vectorOffset = 0;
-   for (std::vector<Rifle>::iterator it  = pFrame->rifleVector.begin();
-                                     it != pFrame->rifleVector.end();
+   for (std::vector<Ship>::iterator it  = pFrame->shipVector.begin();
+                                     it != pFrame->shipVector.end();
                                    ++it)
-   {   //r is a pointer to a rifle in the vector
-      Rifle * r = &pFrame->rifleVector[vectorOffset];
+   {   //r is a pointer to a ship in the vector
+      Ship * r = &pFrame->shipVector[vectorOffset];
       
-      //Draw the rifle at it's current location
+      //Draw the ship at it's current location
       r->draw();
       vectorOffset++;
    }
