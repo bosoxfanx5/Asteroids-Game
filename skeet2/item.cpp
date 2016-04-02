@@ -24,6 +24,7 @@ void Item::move()
    location.addX(slope.getX());
    location.addY(slope.getY());
    
+   //Rotate object
    this->orientation += velocity.getRotationalVelocity();
 
    this->setLocation(location);

@@ -23,7 +23,8 @@ class Asteroid : public Item
    }
    
    //Draw method lets the asteroids draw themselves on the screen
-   void draw() { drawRect(Item::getLocation(), 20, 20, Item::getVelocity().getRotationalVelocity()); }
+   //void draw() { drawRect(Item::getLocation(), 20, 20, Item::getOrientation()); }
+   void draw() { drawLargeAsteroid(Item::getLocation(), Item::getOrientation()); }
    
    //We're calling these from their parent class
    Point    getLocation()  { return Item::getLocation();    }
