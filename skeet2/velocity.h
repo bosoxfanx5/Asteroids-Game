@@ -31,6 +31,7 @@ public:
    void setAngle(int a)          { angle = a; convertSlope();              }
    float getRotationalVelocity() { return rotationalVelocity;              }
    void  setRotationalVelocity(float r) { rotationalVelocity = r;          }
+   void  increaseSpeed(float r)  { hypotenuse += r;                        }
    
 private:
     //Movement
