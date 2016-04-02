@@ -52,11 +52,13 @@ void callBack(const Interface *pUI, void * p)
    
    // rotate and fire the ship
    //Ship 1
+   if (pUI->isUp())    pFrame->shipVector[0].thrust();
    if (pUI->isRight()) pFrame->shipVector[0].turnRight();
    if (pUI->isLeft())  pFrame->shipVector[0].turnLeft();
    if (pUI->isSpace()) pFrame->shipVector[0].fireShip(pFrame->bulletVector);
    
    //Ship 2
+   if (pUI->isF4()) pFrame->shipVector[1].thrust();
    if (pUI->isF1()) pFrame->shipVector[1].turnRight();
    if (pUI->isF3()) pFrame->shipVector[1].turnLeft();
    if (pUI->isF2()) pFrame->shipVector[1].fireShip(pFrame->bulletVector);
@@ -69,6 +71,18 @@ void callBack(const Interface *pUI, void * p)
                                    ++it)
    {   //r is a pointer to a ship in the vector
       Ship * r = &pFrame->shipVector[vectorOffset];
+      
+      //Move the ship using it's own move method.
+      r->move();
+      
+      Point shipLocation = r->getLocation();
+//*/
+      if (shipLocation.getX() < -200) shipLocation.setX( 200);
+      if (shipLocation.getX() >  200) shipLocation.setX(-200);
+      if (shipLocation.getY() < -200) shipLocation.setY( 200);
+      if (shipLocation.getY() >  200) shipLocation.setY(-200);
+//*/
+      pFrame->shipVector[vectorOffset++].setLocation(shipLocation);
       
       //Draw the ship at it's current location
       r->draw();

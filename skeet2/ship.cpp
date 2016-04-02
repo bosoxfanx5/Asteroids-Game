@@ -20,10 +20,10 @@ void Ship :: turnLeft()
    if(ticks < -5) degrees = 3; //set the degrees of rotation to -3
    
    //if the rifle orientation is less than the max
-   if (this->getOrientation() < shipAngleMax)
+   //if (this->getOrientation() < shipAngleMax)
       Item::setOrientation(Item::getOrientation() + degrees); //add degrees (-)
-   else
-      Item::setOrientation(shipAngleMax); //otherwise, reset to max
+   //else
+      //Item::setOrientation(shipAngleMax); //otherwise, reset to max
 }
 
 void Ship :: turnRight()
@@ -39,31 +39,23 @@ void Ship :: turnRight()
    if(ticks < -5) degrees = -3; //set the degrees of rotation to -3
    
    //if the rifle orientation is less than the max
-   if (this->getOrientation() > shipAngleMin)
+   //if (this->getOrientation() > shipAngleMin)
       Item::setOrientation(Item::getOrientation() + degrees); //add degrees (-)
-   else
-      Item::setOrientation(shipAngleMin); //otherwise, reset to max
+   //else
+      //Item::setOrientation(shipAngleMin); //otherwise, reset to max
 }
 
 void Ship :: thrust()
 {
-   velocity.increaseSpeed(1);
+   //Item::setVelocity(10);
+   velocity.increaseSpeed(.1);
    
-   //set degrees of rotation
-   //int degrees = -2;
+   int y = velocity.getHypotenuse() * sin(this->getOrientation() * (M_PI / 180));
+   int x = velocity.getHypotenuse() * cos(this->getOrientation() * (M_PI / 180));
    
-   //if the tick count is less than or equal to zero
-   //if(ticks <= 0) ticks--;    //subract one from the tick count
-   //else           ticks = -1; //otherwise, set the tick count to -1
+   Point p(x,y);
    
-   //if the tick count is less than -3
-   //if(ticks < -5) degrees = -3; //set the degrees of rotation to -3
-   
-   //if the rifle orientation is less than the max
-   //if (this->getOrientation() > shipAngleMin)
-   //   Item::setOrientation(Item::getOrientation() + degrees); //add degrees (-)
-   //else
-   //   Item::setOrientation(shipAngleMin); //otherwise, reset to max
+   velocity.setSlope(p);
 }
 
 void Ship :: fireShip(std::vector <Bullet> & bulletVector)
