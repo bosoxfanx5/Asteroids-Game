@@ -1,28 +1,28 @@
-/*//
-//  pigeon.h
+//
+//  asteroid.h
 //  skeet
 //
 //  Created by Administrator on 2/6/16.
 //  Copyright © 2016 BYU. All rights reserved.
 //
 
-#ifndef pigeon_h
-#define pigeon_h
+#ifndef asteroid_h
+#define asteroid_h
 
 #include <stdio.h>
 #include "item.h"
 #include "uiDraw.h"
 #include <vector>
 
-class Pigeon : Item
+class Asteroid : Item
 {
    public:
    //Bullet constructor contains defaults for all needed values
-   Pigeon() : Item (-100, 100) //Start location is at left edge.
+   Asteroid() : Item (-100, 100) //Start location is at left edge.
    {
    }
    
-   //Draw method lets the pigeons draw themselves on the screen
+   //Draw method lets the asteroids draw themselves on the screen
    void draw() { drawCircle(Item::getLocation(), 20); }
    
    //We're calling these from their parent class
@@ -39,8 +39,8 @@ class Pigeon : Item
    void setVelocity(    Velocity v) { Item::setVelocity(v);    }
    
    void move() { Item::move();    }
-   static void launch(std::vector <Pigeon> & pigeonVector);
+   static void launch(std::vector <Asteroid> & asteroidVector);
    
 };
 
-#endif /* pigeon_h */
+#endif /* asteroid_h */

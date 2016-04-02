@@ -1,18 +1,18 @@
-/*//
-//  pigeon.cpp
+//
+//  asteroid.cpp
 //  skeet
 //
 //  Created by Administrator on 2/6/16.
 //  Copyright © 2016 BYU. All rights reserved.
 //
 
-#include "pigeon.h"
+#include "asteroid.h"
 #include "math.h"
 
-void Pigeon::launch(std::vector <Pigeon> & pigeonVector)
+void Asteroid::launch(std::vector <Asteroid> & asteroidVector)
 {
    
-   Pigeon myPigeon;
+   Asteroid myAsteroid;
    float slope;
    
    Point p;
@@ -30,30 +30,30 @@ void Pigeon::launch(std::vector <Pigeon> & pigeonVector)
       slope = vSpeed/hSpeed;
       
       //generate origin - far left
-      myPigeon.origin.setX(-200);
+      myAsteroid.origin.setX(-200);
       
       //If slope is positive, start on the bottom, else start on the top
       if(slope > 0)
-         myPigeon.origin.setY(random(-200,0)); //start on bottom
+         myAsteroid.origin.setY(random(-200,0)); //start on bottom
       else
-         myPigeon.origin.setY(random(0,200)); //start on top
+         myAsteroid.origin.setY(random(0,200)); //start on top
       
       //check bounds on the destination
       int frames = 400 / hSpeed; //frames it will take to go across screen
-      endY = myPigeon.origin.getY() + (vSpeed * frames); // destination
+      endY = myAsteroid.origin.getY() + (vSpeed * frames); // destination
       
-   } while(endY > 200 || endY < -200 || myPigeon.origin.getY() == endY); //Repeat until destionation is in range
+   } while(endY > 200 || endY < -200 || myAsteroid.origin.getY() == endY); //Repeat until destionation is in range
    
-   //set the pigeon location to it's origin
-   myPigeon.setLocation(myPigeon.origin);
+   //set the asteroid location to it's origin
+   myAsteroid.setLocation(myAsteroid.origin);
    
    //give velocity the slope
    v.setSlope(p);
    
-   //impart velocity to pigeon
-   myPigeon.setVelocity(v);
+   //impart velocity to asteroid
+   myAsteroid.setVelocity(v);
    
-   //push pigeon onto stack
-   pigeonVector.push_back(myPigeon);
+   //push asteroid onto stack
+   asteroidVector.push_back(myAsteroid);
 }
-*/
+//*/

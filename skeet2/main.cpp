@@ -10,7 +10,7 @@
 #include "uiDraw.h"
 #include "ship.h"
 #include "bullet.h"
-#include "pigeon.h"
+#include "asteroid.h"
 #include "banner.h"
 #include "frame.h"
 #include "assert.h"
@@ -100,7 +100,7 @@ void callBack(const Interface *pUI, void * p)
         if (bulletLocation.getX() < -200 || bulletLocation.getX() > 200 ||
             bulletLocation.getY() < -200 || bulletLocation.getY() > 200)
         {
-           //delete pigeon
+           //delete asteroid
            pFrame->bulletVector.erase(it);
            break; //break out of the loop
         }
@@ -112,44 +112,44 @@ void callBack(const Interface *pUI, void * p)
    
    //PIGEONS
    vectorOffset = 0;
-   if (pFrame->pigeonVector.size() < 1 )
+   if (pFrame->asteroidVector.size() < 1 )
    {
-      Pigeon::launch(pFrame->pigeonVector);
+      Asteroid::launch(pFrame->asteroidVector);
    }
    
-   for (std::vector<Pigeon>::iterator it = pFrame->pigeonVector.begin();
-        it != pFrame->pigeonVector.end();
+   for (std::vector<Asteroid>::iterator it = pFrame->asteroidVector.begin();
+        it != pFrame->asteroidVector.end();
         ++it)
    {
-      //p is a pointer to a pigeon in the vector
-      Pigeon * pig = &pFrame->pigeonVector[vectorOffset];
+      //p is a pointer to a asteroid in the vector
+      Asteroid * pig = &pFrame->asteroidVector[vectorOffset];
       
-      //Move the pigeon using it's own move method.
+      //Move the asteroid using it's own move method.
       pig->move();
       
-      //Draw the pigeon at it's current location
+      //Draw the asteroid at it's current location
       pig->draw();
       
-      //If location has not changed on a pigeon we want to know about it
+      //If location has not changed on a asteroid we want to know about it
       assert(                                   pig->getLocation()
-               == pFrame->pigeonVector[vectorOffset].getLocation());
+               == pFrame->asteroidVector[vectorOffset].getLocation());
       
       
-      Point pigeonLocation = pig->getLocation();
+      Point asteroidLocation = pig->getLocation();
       
-      if (pigeonLocation.getX() < -200 || pigeonLocation.getX() > 210 ||
-          pigeonLocation.getY() < -200 || pigeonLocation.getY() > 210)
+      if (asteroidLocation.getX() < -200 || asteroidLocation.getX() > 210 ||
+          asteroidLocation.getY() < -200 || asteroidLocation.getY() > 210)
       {
-         //Increment the counter on missed pigeons...
+         //Increment the counter on missed asteroids...
          pFrame->banner.incrementL();
          
-         //delete pigeon
-         pFrame->pigeonVector.erase(it);
+         //delete asteroid
+         pFrame->asteroidVector.erase(it);
          break; //break out of the loop
       }
       else
       {
-         pFrame->pigeonVector[vectorOffset++].setLocation(pigeonLocation);
+         pFrame->asteroidVector[vectorOffset++].setLocation(asteroidLocation);
       }
    }
    

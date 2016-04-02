@@ -61,13 +61,13 @@ void Frame::detectCollisions()
 {
    for (std::vector<Bullet>::iterator bit  = bulletVector.begin();
         bit != bulletVector.end() &&
-               pigeonVector.size() != 0 &&
+               asteroidVector.size() != 0 &&
                bulletVector.size() != 0;
                                     ++bit)
    {
-      for (std::vector<Pigeon>::iterator pit  = pigeonVector.begin();
-           pit != pigeonVector.end() &&
-                  pigeonVector.size() != 0 &&
+      for (std::vector<Asteroid>::iterator pit  = asteroidVector.begin();
+           pit != asteroidVector.end() &&
+                  asteroidVector.size() != 0 &&
                   bulletVector.size() != 0;
                                        ++pit)
       {
@@ -84,7 +84,7 @@ void Frame::detectCollisions()
          {
             banner.incrementR();
          
-            pigeonVector.erase(pit);
+            asteroidVector.erase(pit);
             bulletVector.erase(bit);
             break;
          }

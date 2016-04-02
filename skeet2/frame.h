@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <vector>
 #include "ship.h"
-#include "pigeon.h"
+#include "asteroid.h"
 #include "bullet.h"
 #include "banner.h"
 
@@ -48,8 +48,8 @@ class Frame
       //Member Data
       std::vector<Ship> shipVector; // < 3
    
-      //Pigeon pigeon;
-      std::vector<Pigeon> pigeonVector; // < 1
+      //Asteroid asteroid;
+      std::vector<Asteroid> asteroidVector; // < 1
    
       //Bullets
       std::vector<Bullet> bulletVector; // < 5
