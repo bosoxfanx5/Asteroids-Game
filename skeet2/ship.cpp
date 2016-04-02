@@ -45,6 +45,27 @@ void Ship :: turnRight()
       Item::setOrientation(shipAngleMin); //otherwise, reset to max
 }
 
+void Ship :: thrust()
+{
+   velocity.setSpeed(<#int s#>)
+   
+   //set degrees of rotation
+   int degrees = -2;
+   
+   //if the tick count is less than or equal to zero
+   if(ticks <= 0) ticks--;    //subract one from the tick count
+   else           ticks = -1; //otherwise, set the tick count to -1
+   
+   //if the tick count is less than -3
+   if(ticks < -5) degrees = -3; //set the degrees of rotation to -3
+   
+   //if the rifle orientation is less than the max
+   if (this->getOrientation() > shipAngleMin)
+      Item::setOrientation(Item::getOrientation() + degrees); //add degrees (-)
+   else
+      Item::setOrientation(shipAngleMin); //otherwise, reset to max
+}
+
 void Ship :: fireShip(std::vector <Bullet> & bulletVector)
 {
     //If we have less than 5 bullets in the vector

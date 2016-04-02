@@ -35,6 +35,7 @@ public:
    void setOrientation(int o) { Item::setOrientation(o);       }
    void turnRight();
    void turnLeft();
+   void thrust();
    void fireShip(std::vector <Bullet> & bulletVector);
    void setMinMax(int min, int max) {shipAngleMin = min; shipAngleMax = max;}
    void setLocation(int x, int y) {Item::setLocation(Point(x,y));}
