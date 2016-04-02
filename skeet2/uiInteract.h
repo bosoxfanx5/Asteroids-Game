@@ -78,6 +78,7 @@ public:
    int  isF1()      const { return isF1Press; };
    int  isF2()      const { return isF2Press; };
    bool isF3()      const { return isF3Press; };
+   bool isF4()      const { return isF4Press; };
    
    static void *p;                   // for client
    static void (*callBack)(const Interface *, void *);
@@ -98,6 +99,7 @@ private:
    static int  isF1Press;          //    "   F1       "
    static bool isF2Press;          //    "   F2 - Fire       "
    static int  isF3Press;          //    "   F3       "
+   static int  isF4Press;          //    "   F4 - Thrust       "
 };
 
 
