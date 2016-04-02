@@ -430,8 +430,8 @@ void drawRect(const Point & center, int width, int height, int rotation)
    rotate(br, center, rotation);
    
    //Finally draw the rectangle
-   glBegin(GL_TRIANGLE_FAN);
-   glColor3f(0.5 /* red % */, 0.5 /* green % */, 0.5 /* blue % */);
+   glBegin(GL_LINE_STRIP);
+   glColor3f(1.0 /* red % */, 1.0 /* green % */, 1.0 /* blue % */);
    glVertex2f(tl.getX(), tl.getY());
    glVertex2f(tr.getX(), tr.getY());
    glVertex2f(br.getX(), br.getY());
