@@ -49,6 +49,7 @@ void Asteroid::launch(std::vector <Asteroid> & asteroidVector)
    
    //give velocity the slope
    v.setSlope(p);
+   v.setRotationalVelocity(10);
    
    //impart velocity to asteroid
    myAsteroid.setVelocity(v);

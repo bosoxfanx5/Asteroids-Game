@@ -17,20 +17,30 @@
 class Velocity
 {
 public:
-   Velocity()           { hypotenuse = 0; }
-   Velocity(int h)      { hypotenuse = h; }
+   //Constructors
+   Velocity()                    { hypotenuse = 0; rotationalVelocity = 0; }
+   Velocity(int h)               { hypotenuse = h;                         }
+   Velocity(int h, float r)      { hypotenuse = h; rotationalVelocity = r; }
    
-   void setSpeed(int s) { hypotenuse = s; }
-   Point getSlope()     { return slope; }
-   void setSlope(Point p)     { slope = p; }
+   //Movement
+   void setSpeed(int s)          { hypotenuse = s;                         }
+   Point getSlope()              { return slope;                           }
+   void setSlope(Point p)        { slope = p;                              }
    
-   void setAngle(int a) {angle = a; convertSlope();}
+   //Orienation and Rotation
+   void setAngle(int a)          { angle = a; convertSlope();              }
+   float getRotationalVelocity() { return rotationalVelocity;              }
+   void  setRotationalVelocity(float r) { rotationalVelocity = r;          }
    
 private:
+    //Movement
     Point slope;
    
     float hypotenuse = 0; //speed in pixels per frame
     float angle = 0;
    
     void convertSlope();
+   
+    //Rotation
+    float rotationalVelocity;
 };

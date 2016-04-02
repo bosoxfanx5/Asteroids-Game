@@ -14,7 +14,7 @@
 #include "uiDraw.h"
 #include <vector>
 
-class Asteroid : Item
+class Asteroid : public Item
 {
    public:
    //Bullet constructor contains defaults for all needed values
@@ -23,7 +23,7 @@ class Asteroid : Item
    }
    
    //Draw method lets the asteroids draw themselves on the screen
-   void draw() { drawCircle(Item::getLocation(), 20); }
+   void draw() { drawRect(Item::getLocation(), 20, 20, Item::getVelocity().getRotationalVelocity()); }
    
    //We're calling these from their parent class
    Point    getLocation()  { return Item::getLocation();    }
@@ -39,8 +39,28 @@ class Asteroid : Item
    void setVelocity(    Velocity v) { Item::setVelocity(v);    }
    
    void move() { Item::move();    }
+   void explode();
+   
    static void launch(std::vector <Asteroid> & asteroidVector);
    
+};
+
+class Pebble : public Asteroid
+{
+   Pebble() : Asteroid() {};
+   void split();
+};
+
+class Rock : public Asteroid
+{
+   Rock() : Asteroid() {};
+   void split();
+};
+
+class Boulder : public Asteroid
+{
+   Boulder() : Asteroid() {};
+   void split();
 };
 
 #endif /* asteroid_h */
