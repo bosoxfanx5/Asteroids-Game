@@ -53,7 +53,14 @@ void Ship :: thrust()
    int y = velocity.getHypotenuse() * sin(this->getOrientation() * (M_PI / 180));
    int x = velocity.getHypotenuse() * cos(this->getOrientation() * (M_PI / 180));
    
-   Point p(x,y);
+   Point p(x + velocity.getSlope().getX(), y + velocity.getSlope().getY());
+   
+   //float radians = (getOrientation() * M_PI) / 180;
+   //float thrustDx = cos(radians) * velocity.getHypotenuse();
+   //float thrustDy = sin(radians) * velocity.getHypotenuse();
+   //
+   //float dx = dx + thrustDx;
+   //float dy = dy + thrustDy;
    
    velocity.setSlope(p);
 }
