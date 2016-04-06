@@ -54,7 +54,7 @@ Frame::Frame()
    r2.setOrientation(45);
    
    shipVector.push_back(r1);
-   shipVector.push_back(r2);
+   //shipVector.push_back(r2);
 }
 
 void Frame::detectCollisions()

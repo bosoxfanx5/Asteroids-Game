@@ -18,7 +18,7 @@ class Ship : Item
 {
 public:
    //Ship constructor contains defaults for all needed values
-   Ship(int l = 60, int w = 10, int o = 135) : Item (0, 0)
+   Ship(int l = 60, int w = 10, int o = 0) : Item (0, 0)
    {
       setOrientation(o);
       width  = w;
@@ -47,7 +47,7 @@ public:
    
    //Draw method lets the ship draw itself on the screen
    void draw() { drawShip(Item::getLocation(),
-                          Item::getOrientation(), false); }
+                          Item::getOrientation() - 90 , false); }
    
    //We're calling these from their parent class
    //Getters and Setters

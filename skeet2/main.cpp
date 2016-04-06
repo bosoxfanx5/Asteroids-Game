@@ -16,21 +16,6 @@
 #include "assert.h"
 using namespace std;
 
-/************************************
- * Test structure to capture the ball
- * that I will move around the screen
- ***********************************/
-class Ball
-{
-public:
-   Ball() : sides(3), rotation(0), pt() { }
-   
-   // this is just for test purposes.  Don't make member variables public!
-   Point pt;          // location of the polygon on the screen
-   int sides;         // number of sides in the polygon.  Initially three
-   int rotation;      // the angle or orientation of the polygon
-};
-
 /*************************************
  * All the interesting work happens here, when
  * I get called back from OpenGL to draw a frame.
@@ -86,7 +71,7 @@ void callBack(const Interface *pUI, void * p)
       
       //Draw the ship at it's current location
       r->draw();
-      vectorOffset++;
+      //vectorOffset++;
    }
 
    
@@ -126,7 +111,7 @@ void callBack(const Interface *pUI, void * p)
    
    //PIGEONS
    vectorOffset = 0;
-   if (pFrame->asteroidVector.size() < 1 )
+   if (pFrame->asteroidVector.size() < 2 )
    {
       Asteroid::launch(pFrame->asteroidVector);
    }
@@ -180,10 +165,6 @@ int main(int argc, char ** argv)
    Interface ui(argc, argv, "Test", Point(-200, 200), Point(200, -200));    // initialize OpenGL
    
    Frame mainFrame;
-   Ball ball2;                           // initialize the game state
-   
-   int size = 2;
-   std::vector<Ball> ballVector(size);
    
    ui.run(callBack, &mainFrame);         // set everything into action
    
