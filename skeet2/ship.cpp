@@ -10,7 +10,7 @@
 void Ship :: turnLeft()
 {
    //set degrees of rotation
-   int degrees = 2;
+   int degrees = 10;
    
    //if the tick count is less than or equal to zero
    if(ticks >= 0) ticks++;    //subract one from the tick count
@@ -29,7 +29,7 @@ void Ship :: turnLeft()
 void Ship :: turnRight()
 {
    //set degrees of rotation
-   int degrees = -2;
+   int degrees = -10;
    
    //if the tick count is less than or equal to zero
    if(ticks <= 0) ticks--;    //subract one from the tick count
@@ -47,36 +47,12 @@ void Ship :: turnRight()
 
 void Ship :: thrust()
 {
-   //Item::setVelocity(10);
-   
-   //Changes ship angle and velocity
-   
-   Velocity push(.1, 0.0);
+   Velocity push(.2, 0.0);
    push.setAngle(this->getOrientation());
    Point p((velocity.getSlope().getX() + push.getSlope().getX()),
             velocity.getSlope().getY() + push.getSlope().getY());
    velocity.setSpeed(sqrt(pow(p.getX(),2) + pow(p.getY(),2)));
    velocity.setSlope(p);
-   
-   
-   
-   //float radians = atan(dy / dx);
-   //float direction = (radians * 180) / M_PI;
-   //float speed = sqrt((dx * dx) + (dy * dy));
-   
-   //int y = velocity.getHypotenuse() * sin(this->getOrientation() * (M_PI / 180));
-   //int x = velocity.getHypotenuse() * cos(this->getOrientation() * (M_PI / 180));
-   
-   //Point p(x + velocity.getSlope().getX(), y + velocity.getSlope().getY());
-   
-   //float radians = (getOrientation() * M_PI) / 180;
-   //float thrustDx = cos(radians) * velocity.getHypotenuse();
-   //float thrustDy = sin(radians) * velocity.getHypotenuse();
-   //
-   //float dx = dx + thrustDx;
-   //float dy = dy + thrustDy;
-   
-   //velocity.setSlope(p);
 }
 
 void Ship :: fireShip(std::vector <Bullet> & bulletVector)
