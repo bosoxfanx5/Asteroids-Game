@@ -59,36 +59,53 @@ Frame::Frame()
 
 void Frame::detectCollisions()
 {
-   for (std::vector<Bullet>::iterator bit  = bulletVector.begin();
+   if (bulletVector.size() != 0)
+      true;
+   
+   bool break2 = false;
+   
+   //for every bullet
+   for (std::vector<Bullet>::iterator bit = bulletVector.begin();
         bit != bulletVector.end() &&
-               asteroidVector.size() != 0 &&
-               bulletVector.size() != 0;
-                                    ++bit)
+        asteroidVector.size() != 0 &&
+        bulletVector.size() != 0;)
    {
-      for (std::vector<Asteroid>::iterator pit  = asteroidVector.begin();
+      //for every asteroid
+      for (std::vector<Asteroid>::iterator pit = asteroidVector.begin();
            pit != asteroidVector.end() &&
-                  asteroidVector.size() != 0 &&
-                  bulletVector.size() != 0;
-                                       ++pit)
+           asteroidVector.size() != 0 &&
+           bulletVector.size() != 0;)
       {
          int x1 = bit->getLocation().getX();
          int x2 = pit->getLocation().getX();
          int y1 = bit->getLocation().getY();
          int y2 = pit->getLocation().getY();
+         //std::cerr << "Distance: " << pow((pow((x2-x1), 2) +
+         // pow((y2-y1), 2)), 0.5) << std::endl;
          
-         std::cerr << "Distance: " << pow((pow((x2-x1), 2) +
-                      pow((y2-y1), 2)), 0.5) << std::endl;
-         
-         if (pow((pow((x2-x1), 2) +
-                  pow((y2-y1), 2)), 0.5) < 20)
+         //if the bullet and the asteroid are in proximity
+         if (pow((pow((x2-x1), 2) + pow((y2-y1), 2)), 0.5) < 20)
          {
             banner.incrementR();
-         
-            asteroidVector.erase(pit);
-            bulletVector.erase(bit);
+            // Here are the changes
+            pit = asteroidVector.erase(pit);
+            bit =   bulletVector.erase(bit);
+            break2 = true;
             break;
          }
+         //else
+         //{
+         pit++; // get rid of ++pit in for loop declaration.
+         // same
+         //}
+         //changes stop here
       }
-      
+      if (break2)
+      {
+         break2 = false;
+         continue;
+      }
+      else
+         bit++;
    }
 }

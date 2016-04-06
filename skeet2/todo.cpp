@@ -3,9 +3,10 @@ TO DO
  - ship/asteroid
  - asteroid/bullet (crash)
 
+* incrase screen size (extra)
 * score? (extra)
 * second ship (extra)
-* split asteroids
+* split asteroids (extra)
 
 ERRORS
 
