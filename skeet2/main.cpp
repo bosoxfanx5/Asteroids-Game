@@ -1,4 +1,4 @@
- /****************************************
+  /****************************************
  * UI TEST
  * Just a simple program to test the user
  * interface consisting of uiDraw and uiInteract
