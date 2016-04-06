@@ -47,7 +47,7 @@ public:
    
    //Draw method lets the ship draw itself on the screen
    void draw() { drawShip(Item::getLocation(),
-                          Item::getOrientation() - 90 , false); }
+                          Item::getOrientation() - 90 , drawThrust); drawThrust = false; }
    
    //We're calling these from their parent class
    //Getters and Setters
@@ -66,6 +66,7 @@ public:
    
    int length;
    int  width;
+   bool drawThrust = false;
    
    int shipAngleMax = 180;
    int shipAngleMin = 90;

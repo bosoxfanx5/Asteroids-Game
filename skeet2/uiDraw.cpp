@@ -668,7 +668,7 @@ void drawLargeAsteroid( const Point & center, int rotation)
  *  INPUT point   The position of the ship
  *        angle   Which direction it is ponted
  *************************************************************************/
-void drawShip(const Point & center, int rotation, bool thrust)
+void drawShip(const Point & center, int rotation, bool drawThrust)
 {
    // ultra simple point
    struct PT
@@ -694,7 +694,7 @@ void drawShip(const Point & center, int rotation, bool thrust)
    glEnd();
    
    // draw the flame if necessary
-   if (thrust)
+   if (drawThrust)
    {
       const PT pointsFlame[3][5] =
       {

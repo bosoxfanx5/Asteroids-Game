@@ -29,6 +29,7 @@ void Ship :: thrust()
             velocity.getSlope().getY() + push.getSlope().getY());
    velocity.setSpeed(sqrt(pow(p.getX(),2) + pow(p.getY(),2)));
    velocity.setSlope(p);
+   drawThrust = true;
 }
 
 void Ship :: fireShip(std::vector <Bullet> & bulletVector)
