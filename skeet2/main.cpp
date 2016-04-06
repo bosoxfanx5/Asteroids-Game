@@ -109,9 +109,9 @@ void callBack(const Interface *pUI, void * p)
         }
     }
    
-   //PIGEONS
+   //ASTEROIDS
    vectorOffset = 0;
-   if (pFrame->asteroidVector.size() < 2 )
+   if (pFrame->asteroidVector.size() < 5 )
    {
       Asteroid::launch(pFrame->asteroidVector);
    }
@@ -133,23 +133,16 @@ void callBack(const Interface *pUI, void * p)
       assert(                                   pig->getLocation()
                == pFrame->asteroidVector[vectorOffset].getLocation());
       
-      
       Point asteroidLocation = pig->getLocation();
       
-      if (asteroidLocation.getX() < -200 || asteroidLocation.getX() > 210 ||
-          asteroidLocation.getY() < -200 || asteroidLocation.getY() > 210)
-      {
-         //Increment the counter on missed asteroids...
-         pFrame->banner.incrementL();
-         
-         //delete asteroid
-         pFrame->asteroidVector.erase(it);
-         break; //break out of the loop
-      }
-      else
-      {
-         pFrame->asteroidVector[vectorOffset++].setLocation(asteroidLocation);
-      }
+      //*/
+      if (asteroidLocation.getX() < -200) asteroidLocation.setX( 200);
+      if (asteroidLocation.getX() >  200) asteroidLocation.setX(-200);
+      if (asteroidLocation.getY() < -200) asteroidLocation.setY( 200);
+      if (asteroidLocation.getY() >  200) asteroidLocation.setY(-200);
+      //*/
+      
+      pFrame->asteroidVector[vectorOffset++].setLocation(asteroidLocation);
    }
    
    pFrame->detectCollisions();

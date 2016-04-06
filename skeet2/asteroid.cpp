@@ -21,8 +21,8 @@ void Asteroid::launch(std::vector <Asteroid> & asteroidVector)
    do
    {
       endY = 0;
-      double hSpeed = random( 3,6);
-      double vSpeed = random(-4,4);
+      double hSpeed = random( -4, 4);
+      double vSpeed = random( -4, 4);
       
       p.setX(hSpeed);
       p.setY(vSpeed);
