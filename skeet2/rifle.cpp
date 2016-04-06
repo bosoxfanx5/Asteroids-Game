@@ -1,4 +1,4 @@
-//
+ //
 //  rifle.cpp
 //  skeet
 //
