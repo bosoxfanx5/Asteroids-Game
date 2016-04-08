@@ -9,7 +9,7 @@
 #include "asteroid.h"
 #include "math.h"
 
-void Asteroid::launch(std::vector <Asteroid> & asteroidVector, int size)
+void Asteroid::launch(std::vector <Asteroid*> & asteroidVector, int size)
 {
    Asteroid* pAsteroid;
    
@@ -83,10 +83,10 @@ void Asteroid::launch(std::vector <Asteroid> & asteroidVector, int size)
    pAsteroid->setVelocity(v);
    
    //push asteroid onto stack
-   asteroidVector.push_back(*pAsteroid);
+   asteroidVector.push_back(pAsteroid);
 }
 
-void Boulder::split(std::vector <Asteroid> & asteroidVector)
+void Boulder::split(std::vector <Asteroid*> & asteroidVector)
 {
    Asteroid::launch(asteroidVector, 1);
    Asteroid::launch(asteroidVector, 1);

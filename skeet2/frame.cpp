@@ -72,15 +72,15 @@ void Frame::detectCollisions()
         bulletVector.size() != 0;)
    {
       //for every asteroid
-      for (std::vector<Asteroid>::iterator pit = asteroidVector.begin();
+      for (std::vector<Asteroid*>::iterator pit = asteroidVector.begin();
            pit != asteroidVector.end() &&
            asteroidVector.size() != 0 &&
            bulletVector.size() != 0;)
       {
-         int x1 = bit->getLocation().getX();
-         int x2 = pit->getLocation().getX();
-         int y1 = bit->getLocation().getY();
-         int y2 = pit->getLocation().getY();
+         int x1 =    bit->getLocation().getX();
+         int x2 = (*pit)->getLocation().getX();
+         int y1 =    bit->getLocation().getY();
+         int y2 = (*pit)->getLocation().getY();
          //std::cerr << "Distance: " << pow((pow((x2-x1), 2) +
          // pow((y2-y1), 2)), 0.5) << std::endl;
          
@@ -92,7 +92,7 @@ void Frame::detectCollisions()
             
             //Boulder (* pAsteroid)(std::vector) = &split;
             
-            pit->split(asteroidVector);
+            (*pit)->split(asteroidVector);
             pit = asteroidVector.erase(pit);
             bit =   bulletVector.erase(bit);
             break2 = true;

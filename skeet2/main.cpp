@@ -116,12 +116,12 @@ void callBack(const Interface *pUI, void * p)
       Asteroid::launch(pFrame->asteroidVector, 2);
    }
    
-   for (std::vector<Asteroid>::iterator it = pFrame->asteroidVector.begin();
+   for (std::vector<Asteroid*>::iterator it = pFrame->asteroidVector.begin();
         it != pFrame->asteroidVector.end();
         ++it)
    {
       //p is a pointer to a asteroid in the vector
-      Asteroid * pig = &pFrame->asteroidVector[vectorOffset];
+      Asteroid * pig = pFrame->asteroidVector[vectorOffset];
       
       //Move the asteroid using it's own move method.
       pig->move();
@@ -131,7 +131,7 @@ void callBack(const Interface *pUI, void * p)
       
       //If location has not changed on a asteroid we want to know about it
       assert(                                   pig->getLocation()
-               == pFrame->asteroidVector[vectorOffset].getLocation());
+               == pFrame->asteroidVector[vectorOffset]->getLocation());
       
       Point asteroidLocation = pig->getLocation();
       
@@ -142,7 +142,7 @@ void callBack(const Interface *pUI, void * p)
       if (asteroidLocation.getY() >  200) asteroidLocation.setY(-200);
       //*/
       
-      pFrame->asteroidVector[vectorOffset++].setLocation(asteroidLocation);
+      pFrame->asteroidVector[vectorOffset++]->setLocation(asteroidLocation);
    }
    
    pFrame->detectCollisions();
