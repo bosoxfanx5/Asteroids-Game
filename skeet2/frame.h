@@ -49,7 +49,7 @@ class Frame
       std::vector<Ship> shipVector; // < 3
    
       //Asteroid asteroid;
-      std::vector<Asteroid*> asteroidVector; // < 1
+      std::vector<Asteroid> asteroidVector; // < 1
    
       //Bullets
       std::vector<Bullet> bulletVector; // < 5
