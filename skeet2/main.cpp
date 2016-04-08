@@ -35,6 +35,10 @@ void callBack(const Interface *pUI, void * p)
    Frame * pFrame = (Frame *)p;  // cast the void pointer into a known type
    pFrame->banner.draw();
    
+   
+   
+   
+   
    // rotate and fire the ship
    //Ship 1
    if (pUI->isUp())    pFrame->shipVector[0].thrust();
@@ -111,7 +115,7 @@ void callBack(const Interface *pUI, void * p)
    
    //ASTEROIDS
    vectorOffset = 0;
-   if (pFrame->asteroidVector.size() < 5 )
+   if (pFrame->asteroidVector.size() < 2 )
    {
       Asteroid::launch(pFrame->asteroidVector, 3);
    }

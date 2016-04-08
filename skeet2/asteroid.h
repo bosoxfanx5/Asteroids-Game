@@ -56,7 +56,7 @@ class Asteroid : public Item
    void setVelocity(    Velocity v) { Item::setVelocity(v);    }
    
    void move() { Item::move();    }
-   void explode(std::vector <Asteroid> & asteroidVector)
+   void explode(std::vector <Asteroid> & asteroidVector, Point p)
    {
       switch (type)
       {
@@ -64,14 +64,15 @@ class Asteroid : public Item
             break;
          case 2:
             //2->2x 1]
-            launch(asteroidVector, 1);
-            launch(asteroidVector, 1);
+            launch(asteroidVector, 1, p);
+            
+            launch(asteroidVector, 1, p);
             break;
          case 3:
             //3->2x 2 & 1x 1
-            launch(asteroidVector, 1);
-            launch(asteroidVector, 2);
-            launch(asteroidVector, 2);
+            launch(asteroidVector, 1, p);
+            launch(asteroidVector, 2, p);
+            launch(asteroidVector, 2, p);
             break;
          default:
             return;
@@ -80,7 +81,7 @@ class Asteroid : public Item
    
    int type = 0; //1 = small, 2 = medium, 3 = large
    
-   static void launch(std::vector <Asteroid> & asteroidVector, int size);
+   static void launch(std::vector <Asteroid> & asteroidVector, int size, Point pin = new Point(0,0));
    
 };
 //

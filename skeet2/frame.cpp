@@ -88,8 +88,9 @@ void Frame::detectCollisions()
          {
             banner.incrementR();
             // Here are the changes
+            Point p = pit->getLocation();
             pit = asteroidVector.erase(pit);
-            pit->explode(asteroidVector);
+            pit->explode(asteroidVector, p);
             bit =   shipVector.erase(bit);
             break2 = true;
             break;
@@ -110,18 +111,22 @@ void Frame::detectCollisions()
          bit++;
    }
    
+   int i = 0;
+   
    //for every bullet
    for (std::vector<Bullet>::iterator bit = bulletVector.begin();
         bit != bulletVector.end() &&
         asteroidVector.size() != 0 &&
         bulletVector.size() != 0;)
    {
+      i = 0;
       //for every asteroid
       for (std::vector<Asteroid>::iterator pit = asteroidVector.begin();
            pit != asteroidVector.end() &&
            asteroidVector.size() != 0 &&
            bulletVector.size() != 0;)
       {
+         i++;
          int x1 = bit->getLocation().getX();
          int x2 = pit->getLocation().getX();
          int y1 = bit->getLocation().getY();
@@ -132,10 +137,12 @@ void Frame::detectCollisions()
          //if the bullet and the asteroid are in proximity
          if (pow((pow((x2-x1), 2) + pow((y2-y1), 2)), 0.5) < 20)
          {
+            std::cerr << "Asteroid Hit: " << i << " at (" << pit->getLocation().getX() << ", " << pit->getLocation().getY() << ")" <<std::endl;
             banner.incrementR();
             // Here are the changes
+            Point p = pit->getLocation();
             pit = asteroidVector.erase(pit);
-            pit->explode(asteroidVector);
+            pit->explode(asteroidVector, p);
             bit =   bulletVector.erase(bit);
             break2 = true;
             break;
