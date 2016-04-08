@@ -113,7 +113,7 @@ void callBack(const Interface *pUI, void * p)
    vectorOffset = 0;
    if (pFrame->asteroidVector.size() < 5 )
    {
-      Asteroid::launch(pFrame->asteroidVector);
+      Asteroid::launch(pFrame->asteroidVector, 3);
    }
    
    for (std::vector<Asteroid>::iterator it = pFrame->asteroidVector.begin();

@@ -9,11 +9,13 @@
 #include "asteroid.h"
 #include "math.h"
 
-void Asteroid::launch(std::vector <Asteroid> & asteroidVector)
+void Asteroid::launch(std::vector <Asteroid> & asteroidVector, int size)
 {
    
    Asteroid myAsteroid;
    float slope;
+   
+   myAsteroid.type = size;
    
    Point p;
    Velocity v;

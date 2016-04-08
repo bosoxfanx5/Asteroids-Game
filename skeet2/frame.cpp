@@ -89,6 +89,7 @@ void Frame::detectCollisions()
             banner.incrementR();
             // Here are the changes
             pit = asteroidVector.erase(pit);
+            pit->explode(asteroidVector);
             bit =   bulletVector.erase(bit);
             break2 = true;
             break;

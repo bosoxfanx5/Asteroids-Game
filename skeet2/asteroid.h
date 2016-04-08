@@ -24,7 +24,23 @@ class Asteroid : public Item
    
    //Draw method lets the asteroids draw themselves on the screen
    //void draw() { drawRect(Item::getLocation(), 20, 20, Item::getOrientation()); }
-   void draw() { drawLargeAsteroid(Item::getLocation(), Item::getOrientation()); }
+   void draw()
+   {
+      switch (type)
+      {
+      case 1:
+         drawSmallAsteroid(Item::getLocation(), Item::getOrientation());
+         break;
+      case 2:
+         drawMediumAsteroid(Item::getLocation(), Item::getOrientation());
+         break;
+      case 3:
+         drawLargeAsteroid(Item::getLocation(), Item::getOrientation());
+         break;
+      default:
+         return;
+      }
+   }
    
    //We're calling these from their parent class
    Point    getLocation()  { return Item::getLocation();    }
@@ -40,28 +56,50 @@ class Asteroid : public Item
    void setVelocity(    Velocity v) { Item::setVelocity(v);    }
    
    void move() { Item::move();    }
-   void explode();
+   void explode(std::vector <Asteroid> & asteroidVector)
+   {
+      switch (type)
+      {
+         case 1:
+            break;
+         case 2:
+            //2->2x 1]
+            launch(asteroidVector, 1);
+            launch(asteroidVector, 1);
+            break;
+         case 3:
+            //3->2x 2 & 1x 1
+            launch(asteroidVector, 1);
+            launch(asteroidVector, 2);
+            launch(asteroidVector, 2);
+            break;
+         default:
+            return;
+      }
+   }
    
-   static void launch(std::vector <Asteroid> & asteroidVector);
+   int type = 0; //1 = small, 2 = medium, 3 = large
+   
+   static void launch(std::vector <Asteroid> & asteroidVector, int size);
    
 };
-
-class Pebble : public Asteroid
-{
-   Pebble() : Asteroid() {};
-   void split();
-};
-
-class Rock : public Asteroid
-{
-   Rock() : Asteroid() {};
-   void split();
-};
-
-class Boulder : public Asteroid
-{
-   Boulder() : Asteroid() {};
-   void split();
-};
-
+//
+//class Pebble : public Asteroid
+//{
+//   Pebble() : Asteroid() {};
+//   void split();
+//};
+//
+//class Rock : public Asteroid
+//{
+//   Rock() : Asteroid() {};
+//   void split();
+//};
+//
+//class Boulder : public Asteroid
+//{
+//   Boulder() : Asteroid() {};
+//   void split();
+//};
+//
 #endif /* asteroid_h */
