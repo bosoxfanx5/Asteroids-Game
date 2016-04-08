@@ -1,4 +1,4 @@
- TO DO
+  TO DO
 * fix collision detection
  - ship/asteroid
  - asteroid/bullet (crash)
