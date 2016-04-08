@@ -64,6 +64,52 @@ void Frame::detectCollisions()
    
    bool break2 = false;
    
+   //for every ship
+   for (std::vector<Ship>::iterator bit = shipVector.begin();
+        bit != shipVector.end() &&
+        asteroidVector.size() != 0 &&
+        shipVector.size() != 0;)
+   {
+      //for every asteroid
+      for (std::vector<Asteroid>::iterator pit = asteroidVector.begin();
+           pit != asteroidVector.end() &&
+           asteroidVector.size() != 0 &&
+           shipVector.size() != 0;)
+      {
+         int x1 = bit->getLocation().getX();
+         int x2 = pit->getLocation().getX();
+         int y1 = bit->getLocation().getY();
+         int y2 = pit->getLocation().getY();
+         //std::cerr << "Distance: " << pow((pow((x2-x1), 2) +
+         // pow((y2-y1), 2)), 0.5) << std::endl;
+         
+         //if the bullet and the asteroid are in proximity
+         if (pow((pow((x2-x1), 2) + pow((y2-y1), 2)), 0.5) < 20)
+         {
+            banner.incrementR();
+            // Here are the changes
+            pit = asteroidVector.erase(pit);
+            pit->explode(asteroidVector);
+            bit =   shipVector.erase(bit);
+            break2 = true;
+            break;
+         }
+         //else
+         //{
+         pit++; // get rid of ++pit in for loop declaration.
+         // same
+         //}
+         //changes stop here
+      }
+      if (break2)
+      {
+         break2 = false;
+         continue;
+      }
+      else
+         bit++;
+   }
+   
    //for every bullet
    for (std::vector<Bullet>::iterator bit = bulletVector.begin();
         bit != bulletVector.end() &&
