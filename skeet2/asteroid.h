@@ -41,27 +41,32 @@ class Asteroid : public Item
    
    void move() { Item::move();    }
    void explode();
+   virtual void split(std::vector <Asteroid> & asteroidVector) = 0;
    
-   static void launch(std::vector <Asteroid> & asteroidVector);
+   static void launch(std::vector <Asteroid> & asteroidVector, int size);
    
 };
 
 class Pebble : public Asteroid
 {
+public:
    Pebble() : Asteroid() {};
-   void split();
+   void split(std::vector <Asteroid> & asteroidVector) {};
 };
 
 class Rock : public Asteroid
 {
+public:
    Rock() : Asteroid() {};
-   void split();
+   void split(std::vector <Asteroid> & asteroidVector) {};
 };
 
 class Boulder : public Asteroid
 {
+public:
    Boulder() : Asteroid() {};
-   void split();
+   virtual void split(std::vector <Asteroid> & asteroidVector);
+   //void (Boulder::*split)(std::vector <Asteroid> & asteroidVector) const = NULL;
 };
 
 #endif /* asteroid_h */

@@ -27,7 +27,7 @@ void Banner::draw()
    
    for (;count > 0; count--)
    {
-      char c = (char) (digitVectorLeft[count - 1] + 48);
+      //char c = (char) (digitVectorLeft[count - 1] + 48);
       //drawDigit(Point(-180 + offset++ * 12, 180), c);
    }
 

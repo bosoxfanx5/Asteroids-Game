@@ -35,6 +35,7 @@
 #include <glut.h>           // OpenGL library we copied
 #include <ctime>            // for ::Sleep();
 #include <Windows.h>
+#include <vector>
 #define _USE_MATH_DEFINES
 #include <math.h>
 #endif // WIN_VISUAL_STUDIO
@@ -88,6 +89,10 @@ void Frame::detectCollisions()
          {
             banner.incrementR();
             // Here are the changes
+            
+            //Boulder (* pAsteroid)(std::vector) = &split;
+            
+            pit->split(asteroidVector);
             pit = asteroidVector.erase(pit);
             bit =   bulletVector.erase(bit);
             break2 = true;
