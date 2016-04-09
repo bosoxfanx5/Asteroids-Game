@@ -14,9 +14,7 @@
 		84ABD5FD1C795BF7008FBB89 /* bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD5EB1C795BF7008FBB89 /* bullet.cpp */; };
 		84ABD5FE1C795BF7008FBB89 /* frame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD5ED1C795BF7008FBB89 /* frame.cpp */; };
 		84ABD5FF1C795BF7008FBB89 /* item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD5EE1C795BF7008FBB89 /* item.cpp */; };
-		84ABD6001C795BF7008FBB89 /* pigeon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD5F01C795BF7008FBB89 /* pigeon.cpp */; };
 		84ABD6011C795BF7008FBB89 /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD5F21C795BF7008FBB89 /* point.cpp */; };
-		84ABD6021C795BF7008FBB89 /* rifle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD5F41C795BF7008FBB89 /* rifle.cpp */; };
 		84ABD6031C795BF7008FBB89 /* uiDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD5F61C795BF7008FBB89 /* uiDraw.cpp */; };
 		84ABD6041C795BF7008FBB89 /* uiInteract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD5F81C795BF7008FBB89 /* uiInteract.cpp */; };
 		84ABD6051C795BF7008FBB89 /* velocity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD5FA1C795BF7008FBB89 /* velocity.cpp */; };
@@ -51,12 +49,8 @@
 		84ABD5ED1C795BF7008FBB89 /* frame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = frame.cpp; sourceTree = "<group>"; };
 		84ABD5EE1C795BF7008FBB89 /* item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = item.cpp; sourceTree = "<group>"; };
 		84ABD5EF1C795BF7008FBB89 /* item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = item.h; sourceTree = "<group>"; };
-		84ABD5F01C795BF7008FBB89 /* pigeon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pigeon.cpp; sourceTree = "<group>"; };
-		84ABD5F11C795BF7008FBB89 /* pigeon.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.c.h; path = pigeon.h; sourceTree = "<group>"; tabWidth = 3; };
 		84ABD5F21C795BF7008FBB89 /* point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = point.cpp; sourceTree = "<group>"; };
 		84ABD5F31C795BF7008FBB89 /* point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = point.h; sourceTree = "<group>"; };
-		84ABD5F41C795BF7008FBB89 /* rifle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rifle.cpp; sourceTree = "<group>"; };
-		84ABD5F51C795BF7008FBB89 /* rifle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rifle.h; sourceTree = "<group>"; };
 		84ABD5F61C795BF7008FBB89 /* uiDraw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.cpp.cpp; path = uiDraw.cpp; sourceTree = "<group>"; tabWidth = 3; };
 		84ABD5F71C795BF7008FBB89 /* uiDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiDraw.h; sourceTree = "<group>"; };
 		84ABD5F81C795BF7008FBB89 /* uiInteract.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiInteract.cpp; sourceTree = "<group>"; };
@@ -111,12 +105,8 @@
 				84ABD5ED1C795BF7008FBB89 /* frame.cpp */,
 				84ABD5EF1C795BF7008FBB89 /* item.h */,
 				84ABD5EE1C795BF7008FBB89 /* item.cpp */,
-				84ABD5F11C795BF7008FBB89 /* pigeon.h */,
-				84ABD5F01C795BF7008FBB89 /* pigeon.cpp */,
 				844806D91CAE189E004CADED /* asteroid.h */,
 				844806DA1CAE18B3004CADED /* asteroid.cpp */,
-				84ABD5F51C795BF7008FBB89 /* rifle.h */,
-				84ABD5F41C795BF7008FBB89 /* rifle.cpp */,
 				844806D61CAE1820004CADED /* ship.h */,
 				844806D71CAE182E004CADED /* ship.cpp */,
 				84ABD5FB1C795BF7008FBB89 /* velocity.h */,
@@ -197,10 +187,8 @@
 				844806D81CAE182E004CADED /* ship.cpp in Sources */,
 				84ABD5FD1C795BF7008FBB89 /* bullet.cpp in Sources */,
 				84ABD6041C795BF7008FBB89 /* uiInteract.cpp in Sources */,
-				84ABD6021C795BF7008FBB89 /* rifle.cpp in Sources */,
 				84ABD5FF1C795BF7008FBB89 /* item.cpp in Sources */,
 				84ABD5FC1C795BF7008FBB89 /* banner.cpp in Sources */,
-				84ABD6001C795BF7008FBB89 /* pigeon.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
