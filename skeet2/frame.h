@@ -60,6 +60,7 @@ class Frame
       void draw();
       void draw(void (*callBack)(const Frame *, void *), void *p);
       void detectCollisions();
+      bool gameOver = false;
    
    private:
       //Member Functions

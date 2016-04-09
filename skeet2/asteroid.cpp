@@ -35,15 +35,15 @@ void Asteroid::launch(std::vector <Asteroid> & asteroidVector, int size, Point p
       slope = vSpeed/hSpeed;
       
       //generate origin - far left
-      myAsteroid.origin.setX(-200);
+      myAsteroid.origin.setX(-400);
       
       if (size == 3)
       {
          //If slope is positive, start on the bottom, else start on the top
          if(slope > 0)
-            myAsteroid.origin.setY(random(-200,0)); //start on bottom
+            myAsteroid.origin.setY(random(-300,0)); //start on bottom
          else
-            myAsteroid.origin.setY(random(0,200)); //start on top
+            myAsteroid.origin.setY(random(0,300)); //start on top
       }
       else
       {
@@ -57,7 +57,7 @@ void Asteroid::launch(std::vector <Asteroid> & asteroidVector, int size, Point p
       int frames = 400 / hSpeed; //frames it will take to go across screen
       endY = myAsteroid.origin.getY() + (vSpeed * frames); // destination
       
-   } while(endY > 200 || endY < -200 || myAsteroid.origin.getY() == endY); //Repeat until destionation is in range
+   } while(endY > 300 || endY < -300 || myAsteroid.origin.getY() == endY); //Repeat until destionation is in range
    
    //set the asteroid location to it's origin
    myAsteroid.setLocation(myAsteroid.origin);

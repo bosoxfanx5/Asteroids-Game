@@ -22,6 +22,12 @@ using std::min;
 using std::max;
 
 /************************************************************************
+ * DRAW GAME OVER
+ * Draw the message GAME OVER on the screen
+ *************************************************************************/
+void drawGameOver();
+
+/************************************************************************
  * DRAW DIGIT
  * Draw a single digit in the old school line drawing style.  The
  * size of the glyph is 8x11 or x+(0..7), y+(0..10)

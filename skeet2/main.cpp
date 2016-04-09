@@ -36,7 +36,8 @@ void callBack(const Interface *pUI, void * p)
    pFrame->banner.draw();
    
    
-   
+   if (pFrame->gameOver)
+      drawGameOver();
    
    
    // rotate and fire the ship
@@ -66,10 +67,10 @@ void callBack(const Interface *pUI, void * p)
       
       Point shipLocation = r->getLocation();
 //*/
-      if (shipLocation.getX() < -200) shipLocation.setX( 200);
-      if (shipLocation.getX() >  200) shipLocation.setX(-200);
-      if (shipLocation.getY() < -200) shipLocation.setY( 200);
-      if (shipLocation.getY() >  200) shipLocation.setY(-200);
+      if (shipLocation.getX() < -400) shipLocation.setX( 400);
+      if (shipLocation.getX() >  400) shipLocation.setX(-400);
+      if (shipLocation.getY() < -300) shipLocation.setY( 300);
+      if (shipLocation.getY() >  300) shipLocation.setY(-300);
 //*/
       pFrame->shipVector[vectorOffset++].setLocation(shipLocation);
       
@@ -100,8 +101,8 @@ void callBack(const Interface *pUI, void * p)
        
         Point bulletLocation = b->getLocation();
        
-        if (bulletLocation.getX() < -200 || bulletLocation.getX() > 200 ||
-            bulletLocation.getY() < -200 || bulletLocation.getY() > 200)
+        if (bulletLocation.getX() < -400 || bulletLocation.getX() > 400 ||
+            bulletLocation.getY() < -300 || bulletLocation.getY() > 300)
         {
            //delete asteroid
            pFrame->bulletVector.erase(it);
@@ -115,7 +116,7 @@ void callBack(const Interface *pUI, void * p)
    
    //ASTEROIDS
    vectorOffset = 0;
-   if (pFrame->asteroidVector.size() < 2 )
+   if (pFrame->asteroidVector.size() < 1 )
    {
       Asteroid::launch(pFrame->asteroidVector, 3);
    }
@@ -140,10 +141,10 @@ void callBack(const Interface *pUI, void * p)
       Point asteroidLocation = pig->getLocation();
       
       //*/
-      if (asteroidLocation.getX() < -200) asteroidLocation.setX( 200);
-      if (asteroidLocation.getX() >  200) asteroidLocation.setX(-200);
-      if (asteroidLocation.getY() < -200) asteroidLocation.setY( 200);
-      if (asteroidLocation.getY() >  200) asteroidLocation.setY(-200);
+      if (asteroidLocation.getX() < -400) asteroidLocation.setX( 400);
+      if (asteroidLocation.getX() >  400) asteroidLocation.setX(-400);
+      if (asteroidLocation.getY() < -300) asteroidLocation.setY( 300);
+      if (asteroidLocation.getY() >  300) asteroidLocation.setY(-300);
       //*/
       
       pFrame->asteroidVector[vectorOffset++].setLocation(asteroidLocation);
@@ -159,7 +160,7 @@ void callBack(const Interface *pUI, void * p)
  *********************************/
 int main(int argc, char ** argv)
 {
-   Interface ui(argc, argv, "Test", Point(-200, 200), Point(200, -200));    // initialize OpenGL
+   Interface ui(argc, argv, "Test", Point(-400, 300), Point(400, -300));    // initialize OpenGL
    
    Frame mainFrame;
    

@@ -88,6 +88,7 @@ void Frame::detectCollisions()
          {
             banner.incrementR();
             // Here are the changes
+            gameOver = true;
             Point p = pit->getLocation();
             pit = asteroidVector.erase(pit);
             pit->explode(asteroidVector, p);
