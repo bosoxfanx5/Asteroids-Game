@@ -141,12 +141,22 @@ void Frame::detectCollisions()
             std::cerr << "Asteroid Hit: " << i << ":" << pit->type << " at (" << pit->getLocation().getX() << ", " << pit->getLocation().getY() << ")" <<std::endl;
             banner.incrementR();
             // Here are the changes
-            Point p = pit->getLocation();
+            //Point p = pit->getLocation();
+            
+            bit = bulletVector.erase(bit);
+            
+            Point p(pit->getLocation().getX(),pit->getLocation().getY());
+            
             pit = asteroidVector.erase(pit);
+            
+            //asteroidVector.erase(pit);
+            
             pit->explode(asteroidVector, p);
-            bit =   bulletVector.erase(bit);
+            
+            
             break2 = true;
-            break;
+            //break;
+            return;
          }
          //else
          //{

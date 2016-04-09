@@ -38,7 +38,8 @@ void callBack(const Interface *pUI, void * p)
    
    if (pFrame->gameOver)
       drawGameOver();
-   
+   else
+   {
    
    // rotate and fire the ship
    //Ship 1
@@ -52,9 +53,18 @@ void callBack(const Interface *pUI, void * p)
    if (pUI->isF1()) pFrame->shipVector[1].turnRight();
    if (pUI->isF3()) pFrame->shipVector[1].turnLeft();
    if (pUI->isF2()) pFrame->shipVector[1].fireShip(pFrame->bulletVector);
+   }
    
+   //n for new game
+   if (pUI->isN() && pFrame->shipVector.size() < 1)
+   {
+      Ship s;
+      pFrame->gameOver = false;
+      pFrame->shipVector.push_back(s);
+      pFrame->banner = *new Banner();
+   }
    
-   //RIFLES
+   //SHIP
    int vectorOffset = 0;
    for (std::vector<Ship>::iterator it  = pFrame->shipVector.begin();
                                      it != pFrame->shipVector.end();
@@ -116,7 +126,7 @@ void callBack(const Interface *pUI, void * p)
    
    //ASTEROIDS
    vectorOffset = 0;
-   if (pFrame->asteroidVector.size() < 1 )
+   if (pFrame->asteroidVector.size() < 2 )
    {
       Asteroid::launch(pFrame->asteroidVector, 3);
    }
@@ -149,6 +159,8 @@ void callBack(const Interface *pUI, void * p)
       
       pFrame->asteroidVector[vectorOffset++].setLocation(asteroidLocation);
    }
+   
+   //--//
    
    pFrame->detectCollisions();
 }

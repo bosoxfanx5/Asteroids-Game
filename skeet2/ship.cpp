@@ -46,7 +46,7 @@ void Ship :: fireShip(std::vector <Bullet> & bulletVector)
        b.setOrientation(0);
        
        Velocity v;
-       v.setSpeed(10);
+       v.setSpeed(this->getVelocity().getHypotenuse() + 10);
        v.setAngle(this->getOrientation());
        
        b.setVelocity(v);

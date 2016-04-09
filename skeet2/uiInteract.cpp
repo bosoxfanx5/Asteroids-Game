@@ -43,6 +43,7 @@
 
 using namespace std;
 
+#define GLUT_KEY_N 110
 
 /*********************************************************************
  * SLEEP
@@ -180,10 +181,13 @@ void Interface::keyEvent(int key, bool fDown)
             break;
         case GLUT_KEY_F3:
             isF3Press = fDown;
-            break;
-        case GLUT_KEY_F4:
-            isF4Press = fDown;
-            break;
+          break;
+       case GLUT_KEY_F4:
+          isF4Press = fDown;
+          break;
+       case GLUT_KEY_N:
+          isNPress = fDown;
+          break;
         case GLUT_KEY_HOME:
         case ' ':
             isSpacePress = fDown;
@@ -212,6 +216,8 @@ void Interface::keyEvent()
       isF3Press++;
    if (isF4Press)
       isF4Press++;
+   if (isNPress)
+      isNPress++;
    
     //Fire Keys
     isSpacePress = false;
@@ -260,6 +266,7 @@ int          Interface::isDownPress  = 0;
 int          Interface::isUpPress    = 0;
 int          Interface::isLeftPress  = 0;
 int          Interface::isRightPress = 0;
+int          Interface::isNPress     = 0;
 int          Interface::isF1Press = 0;
 bool         Interface::isF2Press = 0; //Fire
 int          Interface::isF3Press = 0;

@@ -22,6 +22,8 @@ class Asteroid : public Item
    {
    }
    
+   ~Asteroid() {};
+   
    //Draw method lets the asteroids draw themselves on the screen
    //void draw() { drawRect(Item::getLocation(), 20, 20, Item::getOrientation()); }
    void draw()
@@ -65,7 +67,6 @@ class Asteroid : public Item
          case 2:
             //2->2x 1]
             launch(asteroidVector, 1, p);
-            
             launch(asteroidVector, 1, p);
             break;
          case 3:
