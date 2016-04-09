@@ -13,7 +13,7 @@
 void Asteroid::launch(std::vector <Asteroid> & asteroidVector, int size, Point pin)
 {
    
-   std::cerr << "Explosion at (" << pin.getX() << ", " << pin.getY() << ")" <<std::endl;
+   std::cerr << "Explosion at (" << pin.getX() << ", " << pin.getY() << ") Size: " << size <<std::endl;
    
    Asteroid myAsteroid;
    float slope;

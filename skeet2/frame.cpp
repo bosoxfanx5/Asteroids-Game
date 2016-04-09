@@ -137,7 +137,7 @@ void Frame::detectCollisions()
          //if the bullet and the asteroid are in proximity
          if (pow((pow((x2-x1), 2) + pow((y2-y1), 2)), 0.5) < 20)
          {
-            std::cerr << "Asteroid Hit: " << i << " at (" << pit->getLocation().getX() << ", " << pit->getLocation().getY() << ")" <<std::endl;
+            std::cerr << "Asteroid Hit: " << i << ":" << pit->type << " at (" << pit->getLocation().getX() << ", " << pit->getLocation().getY() << ")" <<std::endl;
             banner.incrementR();
             // Here are the changes
             Point p = pit->getLocation();
